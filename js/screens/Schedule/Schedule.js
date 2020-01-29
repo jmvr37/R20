@@ -11,6 +11,7 @@ import {
   Button,
   FlatList,
   Image,
+  SectionList,
 } from 'react-native';
 import ScheduleContainer from './ScheduleContainer';
 
@@ -19,12 +20,21 @@ class Schedule extends React.Component {
     super(props);
   }
 
+  Hour = startTime => {
+    return (
+      <View>
+        <Text>{startTime}</Text>
+      </View>
+    );
+  };
+
   groupHour = hour => {
     return new Date(hour).toLocaleTimeString('en-US', {
       hour: '2-digit',
       minute: '2-digit',
     });
   };
+
   render() {
     const {data} = this.props;
     const {state} = this.context;
@@ -53,11 +63,3 @@ Schedule.propTypes = {
 };
 
 export default Schedule;
-
-{
-  /* <View>
-        {data.map(item => {
-          return <ScheduleContainer item={item} />;
-        })}
-      </View> */
-}

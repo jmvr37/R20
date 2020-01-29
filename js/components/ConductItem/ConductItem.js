@@ -1,12 +1,21 @@
 import React, {Component} from 'react';
-import {View, Text, TouchableOpacity} from 'react-native';
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  StyleSheet,
+  LayoutAnimation,
+} from 'react-native';
 import styles from './styles';
+
 class ConductItem extends Component {
   constructor(props) {
     super(props);
     this.state = {
       expanded: false,
     };
+
+    const animation = LayoutAnimation.create(400, 'linear', 'opacity');
 
     this.toggleItem = this.toggleItem.bind(this);
   }
