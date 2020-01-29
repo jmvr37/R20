@@ -23,6 +23,6 @@ export const NavigationHeader = navigation => ({
   },
   headerTintColor: '#fff',
   headerTitleStyle: {
-    fontFamily: 'Monserrat',
+    fontFamily: 'Montserrat',
   },
 });

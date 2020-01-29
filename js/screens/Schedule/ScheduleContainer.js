@@ -5,6 +5,7 @@ import {Query} from '@apollo/react-hooks';
 import {gql} from 'apollo-boost';
 import {ApolloProvider} from '@apollo/react-hooks';
 import {SafeAreaView, StyleSheet, ScrollView, View, Text} from 'react-native';
+import SessionList from '../../components/SectionList/SectionList';
 
 const All_SESSIONS = gql`
   query {
@@ -24,7 +25,8 @@ const ScheduleContainer = () => {
 
   return (
     <ScrollView>
-      <Schedule data={data.allSessions} />
+      <SessionList />
+      {/* <Schedule data={data.allSessions} /> */}
     </ScrollView>
   );
 };

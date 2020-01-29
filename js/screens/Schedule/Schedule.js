@@ -52,7 +52,7 @@ class Schedule extends React.Component {
               </View>
             );
           })}
-        </View>
+        </View>{' '}
       </ScrollView>
     );
   }
