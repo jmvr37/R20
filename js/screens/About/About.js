@@ -26,12 +26,12 @@ class About extends React.Component {
     console.log(data);
     return (
       <ScrollView style={styles.aboutPage}>
-        <View>
+        <View style={styles.aboutImage}>
           <Image source={require('../../assets/images/r10_logo.png')} />
         </View>
         <Text style={styles.text}>
-          heloooo R10 is a conference that focuses on just about any topic
-          related to dev
+          R10 is a conference that focuses on just about any topic related to
+          dev
         </Text>
         <View>
           <View>

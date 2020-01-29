@@ -2,27 +2,31 @@ import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
   aboutImage: {
-    width: '70%',
-    height: '70%',
-    resizeMode: 'center',
+    paddingTop: '15%',
+    width: '100%',
+    justifyContent: 'center',
+    alignItems: 'stretch',
   },
 
   aboutPage: {
     padding: 20,
     height: '100%',
+    width: '100%',
+    display: 'flex',
+    flexDirection: 'column',
   },
 
   text: {
-    fontSize: 10,
+    fontSize: 25,
     lineHeight: 25,
     paddingBottom: 10,
-    fontWeight: '100',
-    color: 'red',
+    fontWeight: '400',
+    color: 'black',
   },
   title: {
-    fontSize: 40,
-    fontWeight: '400',
-    paddingBottom: 30,
+    fontSize: 25,
+    fontWeight: 'bold',
+    padding: 15,
     lineHeight: 25,
     maxHeight: 'auto',
   },
