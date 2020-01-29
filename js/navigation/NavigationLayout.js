@@ -7,6 +7,7 @@ import Faves from '../screens/Faves';
 import Maps from '../screens/Maps';
 import {NavigationHeader} from './config';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import Speaker from '../screens/Speaker';
 
 const AboutStack = createStackNavigator(
   {
@@ -55,6 +56,18 @@ const MapsStack = createStackNavigator(
   },
 );
 
+const SpeakerStack = createStackNavigator(
+  {
+    Speaker: Speaker,
+  },
+
+  {
+    defaultNavigationOptions: ({navigation}) => ({
+      ...NavigationHeader(navigation),
+    }),
+  },
+);
+
 // Dedicated stacks for Schedule and Faves will go here too!
 // export default createBottomTabNavigator(AboutStack);
 // export createbottomnavition
@@ -65,6 +78,7 @@ const TabNavigator = createBottomTabNavigator(
     Maps: MapsStack,
     Faves: FavesStack,
     About: AboutStack,
+    Speaker: SpeakerStack,
   },
 
   {

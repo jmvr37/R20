@@ -2,7 +2,7 @@ import React from 'react';
 import {View, ScrollView, Text, Image} from 'react-native';
 import {useQuery} from '@apollo/react-hooks';
 import {gql} from 'apollo-boost';
-
+import SpeakerContainer from './SpeakerContainer';
 const GET_SPEAKERS = gql`
   query {
     allSpeakers {
@@ -26,19 +26,7 @@ const Speaker = () => {
 
   return (
     <ScrollView>
-      <View>
-        <Text>Single Speaker is working</Text>
-      </View>
-      <View>
-        <Image source={data.image} />
-      </View>
-      <View>
-        <Text>{data.name}</Text>
-        <Text>{data.bio}</Text>
-      </View>
-      <View>
-        <Text>{data.url}</Text>
-      </View>
+      <SpeakerContainer data={this.State.data.allSpeakers} />
     </ScrollView>
   );
 };
