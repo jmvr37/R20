@@ -1,34 +1,36 @@
 import React from 'react';
-import {View, ScrollView, Text, Image} from 'react-native';
-import {useQuery} from '@apollo/react-hooks';
-import {gql} from 'apollo-boost';
-import SpeakerContainer from './SpeakerContainer';
-const GET_SPEAKERS = gql`
-  query {
-    allSpeakers {
-      id
-      bio
-      image
-      name
-      session {
-        id
-      }
-      url
-    }
+import {View, ScrollView, Text} from 'react-native';
+import propTypes from 'prop-types';
+
+class Speaker extends React.Component {
+  constructor(props) {
+    super(props);
   }
-`;
 
-const Speaker = () => {
-  const {loading, error, data} = useQuery(GET_SPEAKERS);
+  render() {
+    const {data} = this.props;
+    console.log(data);
 
-  if (loading) return <Text>Loading</Text>;
-  if (error) return <Text>Error</Text>;
+    return (
+      <ScrollView>
+        <View>
+          {data.map(data => {
+            return (
+              <View key={data.id}>
+                <Text>{data.image}</Text>
+                <Text>{data.name}</Text>
+                <Text>{data.bio}</Text>
+              </View>
+            );
+          })}
+        </View>
+      </ScrollView>
+    );
+  }
+}
 
-  return (
-    <ScrollView>
-      <SpeakerContainer data={this.State.data.allSpeakers} />
-    </ScrollView>
-  );
+Speaker.propTypes = {
+  data: propTypes.array.isRequired,
 };
 
 export default Speaker;
