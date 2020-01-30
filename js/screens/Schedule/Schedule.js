@@ -21,7 +21,7 @@ class Schedule extends React.Component {
     super(props);
   }
 
-  groupHour = hour => {
+  GroupHour = hour => {
     return new Date(hour).toLocaleTimeString('en-US', {
       hour: '2-digit',
       minute: '2-digit',
@@ -48,7 +48,9 @@ class Schedule extends React.Component {
             </View>
           </TouchableHighlight>
         )}
-        renderSectionHeader={({section: {title}}) => <Text>{title}</Text>}
+        renderSectionHeader={({section: {title}}) => (
+          <Text>{this.GroupHour(title)}</Text>
+        )}
         sections={sessions.map(({title, data}) => {
           return {title: title, data: data.map(x => x)};
         })}
