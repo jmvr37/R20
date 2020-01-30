@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, ScrollView, Text} from 'react-native';
+import {View, ScrollView, Text, Image} from 'react-native';
 import propTypes from 'prop-types';
 
 class Speaker extends React.Component {
@@ -17,7 +17,10 @@ class Speaker extends React.Component {
           {data.map(data => {
             return (
               <View key={data.id}>
-                <Text>{data.image}</Text>
+                <View>
+                  <Image source={data.image} />
+                </View>
+                {/* <Text>{data.image}</Text> */}
                 <Text>{data.name}</Text>
                 <Text>{data.bio}</Text>
               </View>

@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react';
 import propTypes from 'prop-types';
-
 import {
   SafeAreaView,
   StyleSheet,
@@ -12,21 +11,15 @@ import {
   FlatList,
   Image,
   SectionList,
+  TouchableHighlight,
 } from 'react-native';
 import ScheduleContainer from './ScheduleContainer';
+import {formatData} from './helpers';
 
 class Schedule extends React.Component {
   constructor(props) {
     super(props);
   }
-
-  Hour = startTime => {
-    return (
-      <View>
-        <Text>{startTime}</Text>
-      </View>
-    );
-  };
 
   groupHour = hour => {
     return new Date(hour).toLocaleTimeString('en-US', {
@@ -38,22 +31,29 @@ class Schedule extends React.Component {
   render() {
     const {data} = this.props;
     const {state} = this.context;
+    const sessions = formatData(data);
     console.log(data);
+    // const IconComponent = Ionicons;
 
     return (
-      <ScrollView>
-        <View>
-          {data.map(data => {
-            return (
-              <View key={data.id}>
-                <Text>{data.title}</Text>
-                <Text>{data.location}</Text>
-                <Text>{data.startTime}</Text>
+      <SectionList
+        ItemSeparatorComponent={this.renderSeparator}
+        renderItem={({item, index, section}) => (
+          <TouchableHighlight>
+            <View>
+              <Text key={index}>{item.title}</Text>
+              <View>
+                <Text key={index}>{item.location}</Text>
               </View>
-            );
-          })}
-        </View>{' '}
-      </ScrollView>
+            </View>
+          </TouchableHighlight>
+        )}
+        renderSectionHeader={({section: {title}}) => <Text>{title}</Text>}
+        sections={sessions.map(({title, data}) => {
+          return {title: title, data: data.map(x => x)};
+        })}
+        keyExtractor={(item, index) => item + index}
+      />
     );
   }
 }
@@ -63,3 +63,44 @@ Schedule.propTypes = {
 };
 
 export default Schedule;
+
+// onPress={() =>
+//   this.props.navigation.navigate('Sessions', {
+//     infoSession: item,
+//   })
+// }
+
+// {item.favorite && (
+//   <IconComponent
+//     name={`ios-heart`}
+//     size={20}
+//     color={design.colors.Red}
+//   />
+// )}
+
+// return (
+//   <SectionList
+//     ItemSeparatorComponent={this.renderSeparator}
+//     renderItem={({item, index, section}) => (
+//       <TouchableHighlight>
+//         <View>
+//           <Text key={index}>{item.title}</Text>
+//           <View>
+//             <Text key={index}>{item.location}</Text>
+//           </View>
+//         </View>
+//       </TouchableHighlight>
+//     )}
+//     renderSectionHeader={({section: {title}}) => (
+//       <Text>{this.renderGroupHour(title)}</Text>
+//     )}
+//     sections={sessions.map(({title, data}) => {
+//       return {title: title, data: data.map(x => x)};
+//     })}
+//     keyExtractor={(item, index) => item + index}
+//   />
+// );
+
+{
+  /* <Text>{this.renderGroupHour(title)}</Text>; */
+}

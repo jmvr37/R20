@@ -25,8 +25,8 @@ const ScheduleContainer = () => {
 
   return (
     <ScrollView>
-      <SessionList />
-      {/* <Schedule data={data.allSessions} /> */}
+      {/* <SessionList /> */}
+      <Schedule data={data.allSessions} />
     </ScrollView>
   );
 };
