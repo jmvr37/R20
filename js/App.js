@@ -37,13 +37,6 @@ class App extends React.Component {
   render() {
     return (
       <ApolloProvider client={client}>
-        {/* <View style={{justifyContent: 'center', alignItems: 'center'}}>
-          <Image
-            style={{width: '50%', height: '50%', resizeMode: 'contain'}}
-            source={require('../js/assets/images/r10_logo.png')}
-          />
-        </View> */}
-
         <RootStackNavigator />
       </ApolloProvider>
     );

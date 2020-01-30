@@ -15,6 +15,9 @@ import {
 } from 'react-native';
 import ScheduleContainer from './ScheduleContainer';
 import {formatData} from './helpers';
+import styles from './styles';
+import Session from '../../screens/Session/';
+import {withNavigation} from 'react-navigation';
 
 class Schedule extends React.Component {
   constructor(props) {
@@ -23,9 +26,13 @@ class Schedule extends React.Component {
 
   GroupHour = hour => {
     return new Date(hour).toLocaleTimeString('en-US', {
-      hour: '2-digit',
+      hour: 'numeric',
       minute: '2-digit',
     });
+  };
+
+  separator = () => {
+    return <View style={styles.separator} />;
   };
 
   render() {
@@ -37,19 +44,26 @@ class Schedule extends React.Component {
 
     return (
       <SectionList
-        ItemSeparatorComponent={this.renderSeparator}
+        ItemSeparatorComponent={this.separator}
         renderItem={({item, index, section}) => (
-          <TouchableHighlight>
+          <TouchableHighlight
+            onPress={() => {
+              this.props.navigation.navigate('Session', {item: item});
+            }}>
             <View>
-              <Text key={index}>{item.title}</Text>
+              <Text key={index} style={styles.title}>
+                {item.title}
+              </Text>
               <View>
-                <Text key={index}>{item.location}</Text>
+                <Text key={index} style={styles.location}>
+                  {item.location}
+                </Text>
               </View>
             </View>
           </TouchableHighlight>
         )}
         renderSectionHeader={({section: {title}}) => (
-          <Text>{this.GroupHour(title)}</Text>
+          <Text style={styles.groupsHour}>{this.GroupHour(title)}</Text>
         )}
         sections={sessions.map(({title, data}) => {
           return {title: title, data: data.map(x => x)};
@@ -64,7 +78,9 @@ Schedule.propTypes = {
   data: propTypes.array.isRequired,
 };
 
-export default Schedule;
+// export default Schedule;
+export default withNavigation(Schedule);
+//
 
 // onPress={() =>
 //   this.props.navigation.navigate('Sessions', {
