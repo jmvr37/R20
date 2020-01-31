@@ -10,12 +10,15 @@ class SessionContainer extends React.Component {
     super(props);
   }
   // const item = navigation.getParam('item');
-  // console.log(item);
-  render() {
-    const {navigation} = this.props;
-    const infoSession = navigation.getParam('infoSession');
 
-    return <Session />;
+  render() {
+    console.log(this.props);
+    // const {navigation} = this.props;
+
+    // const infoSession = this.props.navigation.getParam('item');
+    // console.log('ppp' + JSON.stringify(infoSession));
+
+    return <Text>{JSON.stringify(this.props)}</Text>;
   }
 }
 

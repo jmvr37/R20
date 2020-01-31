@@ -8,7 +8,7 @@ class Session extends React.Component {
   }
   render() {
     const {data} = this.props;
-    const {sessios} = data;
+    const {} = data;
 
     console.log(data);
 

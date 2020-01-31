@@ -12,7 +12,9 @@ import Session from '../screens/Session';
 
 const AboutStack = createStackNavigator(
   {
-    About: About,
+    About: {
+      screen: About,
+    },
   },
   {
     defaultNavigationOptions: ({navigation}) => ({
@@ -23,7 +25,9 @@ const AboutStack = createStackNavigator(
 
 const SessionStack = createStackNavigator(
   {
-    Session: Session,
+    Session: {
+      screen: Session,
+    },
   },
   {
     defaultNavigationOptions: ({navigation}) => ({
@@ -34,7 +38,9 @@ const SessionStack = createStackNavigator(
 
 const ScheduleStack = createStackNavigator(
   {
-    Schedule: Schedule,
+    Schedule: {
+      screen: Schedule,
+    },
   },
 
   {
@@ -46,7 +52,9 @@ const ScheduleStack = createStackNavigator(
 
 const FavesStack = createStackNavigator(
   {
-    Faves: Faves,
+    Faves: {
+      screen: Faves,
+    },
   },
 
   {
@@ -58,7 +66,9 @@ const FavesStack = createStackNavigator(
 
 const MapsStack = createStackNavigator(
   {
-    Maps: Maps,
+    Maps: {
+      screen: Maps,
+    },
   },
 
   {
@@ -70,7 +80,9 @@ const MapsStack = createStackNavigator(
 
 const SpeakerStack = createStackNavigator(
   {
-    Speaker: Speaker,
+    Speaker: {
+      screen: Speaker,
+    },
   },
 
   {
