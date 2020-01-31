@@ -14,6 +14,7 @@ const All_SESSIONS = gql`
       title
       location
       startTime
+      description
     }
   }
 `;

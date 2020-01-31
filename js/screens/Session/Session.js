@@ -1,22 +1,14 @@
 import React, {Component} from 'react';
 import {Text, View, ScrollView, Image} from 'react-native';
 import PropTypes from 'prop-types';
+import SessionContainer from './SessionContainer';
 
 class Session extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+  //   constructor(props) {
+  //     super(props);
+  //   }
   render() {
-    const {data} = this.props;
-    const {} = data;
-
-    console.log(data);
-
-    return (
-      <View>
-        <Text>{data.title}</Text>
-      </View>
-    );
+    return <Text>hi</Text>;
   }
 }
 
