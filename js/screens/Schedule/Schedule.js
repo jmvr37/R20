@@ -48,7 +48,7 @@ class Schedule extends React.Component {
         renderItem={({item, index, section}) => (
           <TouchableHighlight
             onPress={() => {
-              this.props.navigation.navigate('Session', {item: item});
+              this.props.navigation.navigate('Session', {infoSession: item});
             }}>
             <View>
               <Text key={index} style={styles.title}>

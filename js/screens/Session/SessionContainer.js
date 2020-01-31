@@ -1,18 +1,22 @@
 import React from 'react';
 import {Text} from 'react-native';
 import {withNavigation} from 'react-navigation';
+import {gql} from 'apollo-boost';
+import {Query} from 'apollo-boost';
+import Session from './Session';
 
-const Session = ({navigation}) => {
-  const item = navigation.getParam('item');
-  console.log('1' + item);
-  //   console.log('2' + navigation);
+class SessionContainer extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  // const item = navigation.getParam('item');
+  // console.log(item);
+  render() {
+    const {navigation} = this.props;
+    const infoSession = navigation.getParam('infoSession');
 
-  return (
-    <>
-      <Text>This is the session page: </Text>
-      <Text>{item}</Text>
-    </>
-  );
-};
+    return <Session />;
+  }
+}
 
-export default withNavigation(Session);
+export default withNavigation(SessionContainer);
