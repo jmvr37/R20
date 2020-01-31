@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
     color: '#999999',
     paddingBottom: 15,
     paddingLeft: 15,
-    paddingTop: 15,
+    paddingTop: 25,
   },
 
   title: {
@@ -14,6 +14,7 @@ const styles = StyleSheet.create({
     paddingTop: 10,
     paddingBottom: 15,
     paddingLeft: 15,
+    fontWeight: 'bold',
   },
 
   hour: {
@@ -21,6 +22,13 @@ const styles = StyleSheet.create({
     paddingLeft: 15,
     paddingBottom: 15,
     color: 'red',
+  },
+
+  description: {
+    fontSize: 25,
+    paddingLeft: 15,
+    fontWeight: '300',
+    lineHeight: 35,
   },
 });
 

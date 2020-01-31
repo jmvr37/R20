@@ -34,7 +34,7 @@ class SessionContainer extends React.Component {
           <Text style={styles.hour}>{this.GroupHour(data?.startTime)}</Text>
         </View>
         <View>
-          <Text>{data?.description}</Text>
+          <Text style={styles.description}>{data?.description}</Text>
         </View>
       </ScrollView>
     );
