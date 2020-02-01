@@ -1,5 +1,14 @@
 import React from 'react';
-import {Text, View, ScrollView} from 'react-native';
+import {
+  Text,
+  View,
+  ScrollView,
+  Image,
+  TouchableOpacity,
+  Modal,
+  Alert,
+  TouchableHighlight,
+} from 'react-native';
 import {withNavigation} from 'react-navigation';
 import {gql} from 'apollo-boost';
 import {Query} from 'apollo-boost';
@@ -10,6 +19,14 @@ import styles from './styles';
 class SessionContainer extends React.Component {
   constructor(props) {
     super(props);
+  }
+
+  state = {
+    modalVisible: false,
+  };
+
+  setModalVisible(visible) {
+    this.setState({modalVisible: visible});
   }
   GroupHour = hour => {
     return new Date(hour).toLocaleTimeString('en-US', {
@@ -35,6 +52,44 @@ class SessionContainer extends React.Component {
         </View>
         <View>
           <Text style={styles.description}>{data?.description}</Text>
+        </View>
+        <View style={{marginTop: 22}}>
+          <Modal
+            animationType="slide"
+            transparent={false}
+            visible={this.state.modalVisible}
+            onRequestClose={() => {
+              Alert.alert('Modal has been closed.');
+            }}>
+            <View style={{marginTop: 22}}>
+              <View>
+                <View>
+                  <View key={data?.id}>
+                    <View>
+                      <Image source={data?.image} />
+                    </View>
+                    <Text>{data?.title}</Text>
+                    <Text>{data?.name}</Text>
+                    <Text>{data?.bio}</Text>
+                  </View>
+                </View>
+
+                <TouchableHighlight
+                  onPress={() => {
+                    this.setModalVisible(!this.state.modalVisible);
+                  }}>
+                  <Text> X</Text>
+                </TouchableHighlight>
+              </View>
+            </View>
+          </Modal>
+
+          <TouchableHighlight
+            onPress={() => {
+              this.setModalVisible(true);
+            }}>
+            <Text>Show Modal</Text>
+          </TouchableHighlight>
         </View>
       </ScrollView>
     );

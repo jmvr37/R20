@@ -9,6 +9,13 @@ import {NavigationHeader} from './config';
 // import Ionicons from 'react-native-vector-icons/Ionicons';
 import Speaker from '../screens/Speaker';
 import Session from '../screens/Session';
+import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
+import {
+  faCalendarAlt,
+  faHeart,
+  faMap,
+  faExclamationCircle,
+} from '@fortawesome/free-solid-svg-icons';
 
 const AboutStack = createStackNavigator(
   {
@@ -110,18 +117,24 @@ const TabNavigator = createBottomTabNavigator(
     // defaultNavigationOptions: ({navigation}) => ({
     //   tabBarIcon: ({tintColor}) => {
     //     const {routeName} = navigation.state;
-    //     let IconComponent = Ionicons;
+    //     let FontAwesomeIcons = FontAwesomeIcon;
     //     let iconName;
     //     if (routeName === 'Schedule') {
-    //       iconName = 'ios-calendar';
+    //       iconName = 'faCalendarAlt';
     //     } else if (routeName === 'Map') {
-    //       iconName = 'ios-map';
+    //       iconName = 'faMap';
     //     } else if (routeName === 'Faves') {
     //       iconName = 'ios-heart';
     //     } else if (routeName === 'About') {
     //       iconName = 'ios-information-circle';
     //     }
-    //     return <IconComponent name={iconName} size={25} color={tintColor} />;
+    //     return (
+    //       <FontAwesomeIcons
+    //         iconName={faCalendarAlt}
+    //         size={25}
+    //         color={tintColor}
+    //       />
+    //     );
     //   },
     // }),
 

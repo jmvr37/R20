@@ -3,14 +3,19 @@ import {Text, View, ScrollView, Image} from 'react-native';
 import PropTypes from 'prop-types';
 import SessionContainer from './SessionContainer';
 
-class Session extends React.Component {
+const Session = () => {
   //   constructor(props) {
   //     super(props);
   //   }
-  render() {
-    return <Text>hi</Text>;
+  {
+    return (
+      <View>
+        <SessionContainer />
+        <Text>helloooo</Text>
+      </View>
+    );
   }
-}
+};
 
 Session.propTypes = {
   data: PropTypes.object.isRequired,

@@ -1,21 +1,14 @@
 import React, {Component} from 'react';
 import MapView from 'react-native-maps';
+import {map_pin} from '../../assets/images/map_pin.png';
+import Marker from 'react-native-maps';
 
-import {
-  SafeAreaView,
-  TouchableOpacity,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  StatusBar,
-  Button,
-  FlatList,
-  Image,
-} from 'react-native';
-import MapsContainer from './MapsContainer';
-
-//ADD CODE ON LINE 39 TO 43 TO TEST THE ANIMATION LAYOUT EXERCISE
+const marker = {
+  latlng: {
+    latitude: 49.263551,
+    longitude: -123.138128,
+  },
+};
 
 class Maps extends React.Component {
   render() {
@@ -28,27 +21,14 @@ class Maps extends React.Component {
           latitudeDelta: 0.0922,
           longitudeDelta: 0.0421,
         }}
-        showsUserLocation={true}
-      />
-      // <View>
-      //   <TouchableOpacity>
-      //     <Text>this text is inside the schedule page yes</Text>
-      //   </TouchableOpacity>
-      // </View>
+        showsUserLocation={true}>
+        <Marker
+          coordinate={marker.latlng}
+          image={require('../../assets/images/map_pin.png')}
+        />
+      </MapView>
     );
   }
 }
-
-// class Maps extends React.Component {
-//   render() {
-//     // return(
-//     //     <View>
-//     //     <Text> this text is inside the schedule page yes </Text>
-//     //     </View>
-
-//     // );
-//     return <MapsContainer />;
-//   }
-// }
 
 export default Maps;
