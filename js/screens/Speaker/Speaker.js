@@ -37,22 +37,28 @@ class Speaker extends React.Component {
 
     return (
       <ScrollView>
-        <View>
-          <View style={styles.speakerContainer}>
-            <TouchableOpacity
-              onPress={() => {
-                navigation.goBack();
-              }}>
-              <Text>Close Modal</Text>
-            </TouchableOpacity>
-            <Image
-              source={{uri: data.image}}
-              style={{width: 140, height: 140, borderRadius: 400 / 2}}
-            />
-            <Text style={styles.name}>{data.name}</Text>
-            <Text style={styles.bio}>{data.bio}</Text>
-            <Text>{data.url}</Text>
-          </View>
+        <View style={styles.speakerContainer}>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.goBack();
+            }}>
+            <Text style={{fontSize: 24, color: 'white'}}>X</Text>
+          </TouchableOpacity>
+          <Text style={styles.About}>About the Speaker</Text>
+        </View>
+
+        <View style={styles.infoContainer}>
+          <Image
+            source={{uri: data.image}}
+            style={{
+              width: 140,
+              height: 140,
+              borderRadius: 400 / 2,
+            }}
+          />
+          <Text style={styles.name}>{data.name}</Text>
+          <Text style={styles.bio}>{data.bio}</Text>
+          <Text>{data.url}</Text>
         </View>
       </ScrollView>
     );

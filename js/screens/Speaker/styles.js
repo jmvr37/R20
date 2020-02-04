@@ -7,20 +7,36 @@ const styles = StyleSheet.create({
     paddingLeft: 20,
     paddingRight: 20,
     display: 'flex',
-    justifyContent: 'center',
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    backgroundColor: 'black',
   },
   name: {
-    fontSize: 20,
-    fontWeight: '400',
+    fontSize: 30,
+    fontWeight: '600',
     paddingBottom: 20,
     paddingTop: 40,
   },
   bio: {
-    fontSize: 15,
-    paddingBottom: 30,
+    fontSize: 20,
+    lineHeight: 30,
   },
   close: {
     paddingTop: 30,
+  },
+  About: {
+    paddingLeft: 80,
+    fontSize: 24,
+    paddingBottom: 30,
+    color: 'white',
+  },
+  infoContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    paddingTop: 40,
+    paddingLeft: 15,
+    paddingRight: 15,
   },
 });
 
