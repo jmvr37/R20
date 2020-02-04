@@ -8,6 +8,7 @@ import {
   Modal,
   Alert,
   TouchableHighlight,
+  Button,
 } from 'react-native';
 import {withNavigation} from 'react-navigation';
 import {gql} from 'apollo-boost';
@@ -16,6 +17,7 @@ import Session from './Session';
 import PropTypes from 'prop-types';
 import styles from './styles';
 import {useQuery} from '@apollo/react-hooks';
+import LinearGradient from 'react-native-linear-gradient';
 import SpeakerContainer from '../Speaker/SpeakerContainer';
 class SessionContainer extends React.Component {
   constructor(props) {
@@ -78,6 +80,23 @@ class SessionContainer extends React.Component {
               <Text style={styles.speakerName}>{data.speaker.name}</Text>
             </View>
           </TouchableHighlight>
+          <View style={styles.border}></View>
+          <View style={styles.removeContainer}>
+            <TouchableOpacity
+              style={styles.button}
+              title="Remove from faves"
+              onPress={() => Alert.alert('button pressed')}>
+              <LinearGradient
+                colors={['#7B7DD1', '#874AED']}
+                start={{x: 1, y: 0}}
+                end={{x: 0, y: 1}}
+                style={styles.gradient}>
+                <Text style={{fontSize: 25, color: 'white'}}>
+                  Remove from Faves
+                </Text>
+              </LinearGradient>
+            </TouchableOpacity>
+          </View>
         </View>
       </ScrollView>
     );

@@ -41,6 +41,27 @@ const styles = StyleSheet.create({
     paddingLeft: 15,
     paddingTop: 20,
   },
+  button: {
+    width: '80%',
+    height: 60,
+  },
+  border: {
+    borderBottomWidth: 3,
+    borderBottomColor: '#ededed',
+    height: 30,
+  },
+  gradient: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 30,
+  },
+  removeContainer: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    margin: 30,
+  },
 });
 
 export default styles;
