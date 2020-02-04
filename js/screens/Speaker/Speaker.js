@@ -38,22 +38,11 @@ class Speaker extends React.Component {
     return (
       <ScrollView>
         <View style={styles.speakerContainer}>
-          {/* {data.map(data => {
-            return (
-              <View key={data.id}>
-                <View>
-                  <Image source={data.image} />
-                </View>
-                <View>
-                  <Text style={styles.name}>{data.name}</Text>
-                  <Text style={styles.bio}>{data.bio}</Text>
+          <Image
+            source={{uri: data.image}}
+            style={{width: 140, height: 140, borderRadius: 400 / 2}}
+          />
 
-                  <Text>{data.url}</Text>
-                </View>
-              </View>
-            );
-          })} */}
-          <Text>Hellllooooo</Text>
           <Text>{data.name}</Text>
           <Text>{data.bio}</Text>
           <TouchableOpacity
