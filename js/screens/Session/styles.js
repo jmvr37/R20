@@ -30,6 +30,17 @@ const styles = StyleSheet.create({
     fontWeight: '300',
     lineHeight: 35,
   },
+  speakerInfo: {
+    display: 'flex',
+    flexDirection: 'row',
+    paddingLeft: 20,
+    paddingTop: 30,
+  },
+  speakerName: {
+    fontSize: 24,
+    paddingLeft: 15,
+    paddingTop: 20,
+  },
 });
 
 export default styles;

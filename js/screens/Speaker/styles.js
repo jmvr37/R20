@@ -2,10 +2,12 @@ import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
   speakerContainer: {
-    paddingTop: 20,
+    paddingTop: 100,
     paddingBottom: 20,
     paddingLeft: 20,
     paddingRight: 20,
+    display: 'flex',
+    justifyContent: 'center',
   },
   name: {
     fontSize: 20,

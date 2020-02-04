@@ -56,11 +56,27 @@ class SessionContainer extends React.Component {
           <Text style={styles.description}>{data?.description}</Text>
         </View>
         <View style={{marginTop: 22}}>
+          <View>
+            <Text style={{fontSize: 23, color: 'grey', paddingLeft: 15}}>
+              Presented by:
+            </Text>
+          </View>
           <TouchableHighlight
             onPress={() => {
               navigation.push('Speaker', {speakerData: data.speaker});
             }}>
-            <Text>Show Modal</Text>
+            <View style={styles.speakerInfo}>
+              <Image
+                source={{uri: data.speaker.image}}
+                style={{
+                  width: 70,
+                  height: 70,
+                  borderRadius: 400 / 2,
+                  paddingLeft: 20,
+                }}
+              />
+              <Text style={styles.speakerName}>{data.speaker.name}</Text>
+            </View>
           </TouchableHighlight>
         </View>
       </ScrollView>
