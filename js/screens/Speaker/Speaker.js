@@ -16,13 +16,13 @@ class Speaker extends React.Component {
     super(props);
   }
 
-  // state = {
-  //   modalVisible: false,
-  // };
+  state = {
+    modalVisible: false,
+  };
 
-  // setModalVisible(visible) {
-  //   this.setState({modalVisible: visible});
-  // }
+  setModalVisible(visible) {
+    this.setState({modalVisible: visible});
+  }
 
   render() {
     const {data} = this.props;
@@ -39,7 +39,6 @@ class Speaker extends React.Component {
                 <View>
                   <Image source={data.image} />
                 </View>
-                {/* <Text>{data.image}</Text> */}
                 <Text>{data.name}</Text>
                 <Text>{data.bio}</Text>
               </View>

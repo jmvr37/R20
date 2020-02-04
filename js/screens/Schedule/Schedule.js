@@ -66,8 +66,13 @@ class Schedule extends React.Component {
         renderSectionHeader={({section: {title}}) => (
           <Text style={styles.groupsHour}>{this.GroupHour(title)}</Text>
         )}
-        sections={sessions.map(({title, data}) => {
-          return {title: title, data: data.map(x => x)};
+        sections={sessions.map(({title, data, name, image}) => {
+          return {
+            title: title,
+            data: data.map(x => x),
+            name: name,
+            image: image,
+          };
         })}
         keyExtractor={(item, index) => item + index}
       />

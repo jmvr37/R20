@@ -15,7 +15,8 @@ import {Query} from 'apollo-boost';
 import Session from './Session';
 import PropTypes from 'prop-types';
 import styles from './styles';
-
+import {useQuery} from '@apollo/react-hooks';
+import SpeakerContainer from '../Speaker/SpeakerContainer';
 class SessionContainer extends React.Component {
   constructor(props) {
     super(props);
@@ -68,9 +69,9 @@ class SessionContainer extends React.Component {
                     <View>
                       <Image source={data?.image} />
                     </View>
-                    <Text>{data?.title}</Text>
                     <Text>{data?.name}</Text>
-                    <Text>{data?.bio}</Text>
+                    <Text>{data?.image}</Text>
+                    <SpeakerContainer />
                   </View>
                 </View>
 

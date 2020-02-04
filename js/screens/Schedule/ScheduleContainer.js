@@ -15,6 +15,11 @@ const All_SESSIONS = gql`
       location
       startTime
       description
+      speaker {
+        id
+        name
+        image
+      }
     }
   }
 `;
