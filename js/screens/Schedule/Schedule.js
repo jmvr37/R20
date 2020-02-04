@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useContext} from 'react';
 import propTypes from 'prop-types';
 import {
   SafeAreaView,
@@ -22,6 +22,8 @@ import {withNavigation} from 'react-navigation';
 // import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 // import {faHeart} from '@fortawesome/free-solid-svg-icons';
 // import {faHeart as emptyHeart} from '@fortawesome/free-regular-svg-icons';
+import {FavesContext} from '../../context/FavesContext.js';
+import {models} from '../../config/models';
 
 class Schedule extends React.Component {
   constructor(props) {
@@ -41,8 +43,10 @@ class Schedule extends React.Component {
 
   render() {
     const {data} = this.props;
-    const {state} = this.context;
+    const {faveIds, setFaveIds} = this.context;
     const sessions = formatData(data);
+    // const [faveIds, setFaveIds] = useContext(FavesContext);
+
     console.log(data);
     // const IconComponent = Ionicons;
 
@@ -65,7 +69,11 @@ class Schedule extends React.Component {
                 </Text>
                 <TouchableOpacity
                   onPress={() => {
-                    // setFaveIds([])
+                    // if (faveIds.indexOf(item.id) == -1) {
+                    //   setFaveIds([...faveIds, item.id]);
+                    // }
+                    // models.setFave([...faveIds, item.id]);
+                    // setFaveIds([]);
                   }}>
                   <View style={styles.icon}>
                     <Text>heart icon</Text>
@@ -96,47 +104,4 @@ Schedule.propTypes = {
   data: propTypes.array.isRequired,
 };
 
-// export default Schedule;
 export default withNavigation(Schedule);
-//
-
-// onPress={() =>
-//   this.props.navigation.navigate('Sessions', {
-//     infoSession: item,
-//   })
-// }
-
-// {item.favorite && (
-//   <IconComponent
-//     name={`ios-heart`}
-//     size={20}
-//     color={design.colors.Red}
-//   />
-// )}
-
-// return (
-//   <SectionList
-//     ItemSeparatorComponent={this.renderSeparator}
-//     renderItem={({item, index, section}) => (
-//       <TouchableHighlight>
-//         <View>
-//           <Text key={index}>{item.title}</Text>
-//           <View>
-//             <Text key={index}>{item.location}</Text>
-//           </View>
-//         </View>
-//       </TouchableHighlight>
-//     )}
-//     renderSectionHeader={({section: {title}}) => (
-//       <Text>{this.renderGroupHour(title)}</Text>
-//     )}
-//     sections={sessions.map(({title, data}) => {
-//       return {title: title, data: data.map(x => x)};
-//     })}
-//     keyExtractor={(item, index) => item + index}
-//   />
-// );
-
-{
-  /* <Text>{this.renderGroupHour(title)}</Text>; */
-}

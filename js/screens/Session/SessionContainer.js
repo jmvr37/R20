@@ -37,7 +37,8 @@ class SessionContainer extends React.Component {
   };
 
   render() {
-    const data = this.props.navigation.state.params?.item;
+    const {navigation} = this.props;
+    const data = navigation.state.params?.item;
     console.log(this.props);
 
     return (
@@ -55,39 +56,9 @@ class SessionContainer extends React.Component {
           <Text style={styles.description}>{data?.description}</Text>
         </View>
         <View style={{marginTop: 22}}>
-          <Modal
-            animationType="slide"
-            transparent={false}
-            visible={this.state.modalVisible}
-            onRequestClose={() => {
-              Alert.alert('Modal has been closed.');
-            }}>
-            <View style={{marginTop: 22}}>
-              <View>
-                <View>
-                  <View key={data?.id}>
-                    <View>
-                      <Image source={data?.image} />
-                    </View>
-                    <Text>{data?.name}</Text>
-                    <Text>{data?.image}</Text>
-                    <SpeakerContainer />
-                  </View>
-                </View>
-
-                <TouchableHighlight
-                  onPress={() => {
-                    this.setModalVisible(!this.state.modalVisible);
-                  }}>
-                  <Text> X</Text>
-                </TouchableHighlight>
-              </View>
-            </View>
-          </Modal>
-
           <TouchableHighlight
             onPress={() => {
-              this.setModalVisible(true);
+              navigation.push('Speaker', {speakerData: data.speaker});
             }}>
             <Text>Show Modal</Text>
           </TouchableHighlight>
@@ -102,7 +73,3 @@ SessionContainer.propTypes = {
 };
 
 export default withNavigation(SessionContainer);
-
-{
-  /* <Text>{JSON.stringify(data)}</Text>; */
-}

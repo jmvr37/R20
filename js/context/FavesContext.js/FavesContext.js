@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 export const FavesContext = React.createContext();
+import AsyncStorage from '@react-native-community/async-storage';
 
 class FavesProvider extends React.Component {
   constructor(props) {

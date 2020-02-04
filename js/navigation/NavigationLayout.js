@@ -30,24 +30,10 @@ const AboutStack = createStackNavigator(
   },
 );
 
-const SessionStack = createStackNavigator(
-  {
-    Session: {
-      screen: Session,
-    },
-  },
-  {
-    defaultNavigationOptions: ({navigation}) => ({
-      ...NavigationHeader(navigation),
-    }),
-  },
-);
-
 const ScheduleStack = createStackNavigator(
   {
-    Schedule: {
-      screen: Schedule,
-    },
+    Schedule: Schedule,
+    Session: Session,
   },
 
   {
@@ -85,20 +71,6 @@ const MapsStack = createStackNavigator(
   },
 );
 
-const SpeakerStack = createStackNavigator(
-  {
-    Speaker: {
-      screen: Speaker,
-    },
-  },
-
-  {
-    defaultNavigationOptions: ({navigation}) => ({
-      ...NavigationHeader(navigation),
-    }),
-  },
-);
-
 // Dedicated stacks for Schedule and Faves will go here too!
 // export default createBottomTabNavigator(AboutStack);
 // export createbottomnavition
@@ -109,8 +81,6 @@ const TabNavigator = createBottomTabNavigator(
     Maps: MapsStack,
     Faves: FavesStack,
     About: AboutStack,
-    Speaker: SpeakerStack,
-    Session: SessionStack,
   },
 
   {

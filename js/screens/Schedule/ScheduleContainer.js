@@ -19,6 +19,7 @@ const All_SESSIONS = gql`
         id
         name
         image
+        bio
       }
     }
   }

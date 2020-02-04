@@ -19,7 +19,8 @@ const GET_SPEAKERS = gql`
   }
 `;
 
-const SpeakerContainer = () => {
+const SpeakerContainer = ({navigation}) => {
+  console.log(navigation.state.params);
   const {loading, error, data} = useQuery(GET_SPEAKERS);
 
   if (loading) return <Text>Loading</Text>;
@@ -27,7 +28,7 @@ const SpeakerContainer = () => {
 
   return (
     <ScrollView>
-      <Speaker data={data.allSpeakers} />
+      <Speaker data={navigation.state.params.speakerData} />
     </ScrollView>
   );
 };

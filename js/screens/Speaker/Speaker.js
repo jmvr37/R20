@@ -7,9 +7,12 @@ import {
   Modal,
   Alert,
   TouchableHighlight,
+  TouchableOpacity,
+  Button,
 } from 'react-native';
 import propTypes from 'prop-types';
 import {withNavigation} from 'react-navigation';
+import styles from './styles';
 
 class Speaker extends React.Component {
   constructor(props) {
@@ -25,25 +28,40 @@ class Speaker extends React.Component {
   }
 
   render() {
-    const {data} = this.props;
+    const {data, navigation} = this.props;
     // const data = this.props.navigation.state.params?.item;
 
     console.log(data);
+    console.log('navigation');
+    console.log(this.props);
 
     return (
       <ScrollView>
-        <View>
-          {data.map(data => {
+        <View style={styles.speakerContainer}>
+          {/* {data.map(data => {
             return (
               <View key={data.id}>
                 <View>
                   <Image source={data.image} />
                 </View>
-                <Text>{data.name}</Text>
-                <Text>{data.bio}</Text>
+                <View>
+                  <Text style={styles.name}>{data.name}</Text>
+                  <Text style={styles.bio}>{data.bio}</Text>
+
+                  <Text>{data.url}</Text>
+                </View>
               </View>
             );
-          })}
+          })} */}
+          <Text>Hellllooooo</Text>
+          <Text>{data.name}</Text>
+          <Text>{data.bio}</Text>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.goBack();
+            }}>
+            <Text>Close Modal</Text>
+          </TouchableOpacity>
         </View>
       </ScrollView>
     );
@@ -54,45 +72,4 @@ Speaker.propTypes = {
   data: propTypes.array.isRequired,
 };
 
-export default Speaker;
-
-{
-  /* <View style={{marginTop: 22}}>
-<Modal
-  animationType="slide"
-  transparent={false}
-  visible={this.state.modalVisible}
-  onRequestClose={() => {
-    Alert.alert('Modal has been closed.');
-  }}>
-  <View style={{marginTop: 22}}>
-    <View>
-      <View>
-        <View key={data.id}>
-          <View>
-            <Image source={data.image} />
-          </View>
-          <Text>{data.image}</Text>
-          <Text>{data.name}</Text>
-          <Text>{data.bio}</Text>
-        </View>
-      </View>
-
-      <TouchableHighlight
-        onPress={() => {
-          this.setModalVisible(!this.state.modalVisible);
-        }}>
-        <Text> X</Text>
-      </TouchableHighlight>
-    </View>
-  </View>
-</Modal>
-
-<TouchableHighlight
-  onPress={() => {
-    this.setModalVisible(true);
-  }}>
-  <Text>Show Modal</Text>
-</TouchableHighlight>
-</View> */
-}
+export default withNavigation(Speaker);
