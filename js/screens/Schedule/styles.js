@@ -28,6 +28,11 @@ const styles = StyleSheet.create({
     paddingBottom: 15,
     paddingLeft: 15,
   },
+  locationContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
   container: {
     flex: 1,
     justifyContent: 'center',
@@ -36,6 +41,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
     padding: 10,
+  },
+  icon: {
+    paddingRight: 20,
   },
 });
 

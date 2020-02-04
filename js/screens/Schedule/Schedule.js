@@ -12,12 +12,16 @@ import {
   Image,
   SectionList,
   TouchableHighlight,
+  TouchableOpacity,
 } from 'react-native';
 import ScheduleContainer from './ScheduleContainer';
 import {formatData} from './helpers';
 import styles from './styles';
 import Session from '../../screens/Session/';
 import {withNavigation} from 'react-navigation';
+// import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
+// import {faHeart} from '@fortawesome/free-solid-svg-icons';
+// import {faHeart as emptyHeart} from '@fortawesome/free-regular-svg-icons';
 
 class Schedule extends React.Component {
   constructor(props) {
@@ -55,10 +59,18 @@ class Schedule extends React.Component {
               <Text key={index} style={styles.title}>
                 {item.title}
               </Text>
-              <View>
+              <View style={styles.locationContainer}>
                 <Text key={index} style={styles.location}>
                   {item.location}
                 </Text>
+                <TouchableOpacity
+                  onPress={() => {
+                    // setFaveIds([])
+                  }}>
+                  <View style={styles.icon}>
+                    <Text>heart icon</Text>
+                  </View>
+                </TouchableOpacity>
               </View>
             </View>
           </TouchableHighlight>
