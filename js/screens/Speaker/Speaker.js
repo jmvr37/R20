@@ -12,6 +12,8 @@ import {
 } from 'react-native';
 import propTypes from 'prop-types';
 import {withNavigation} from 'react-navigation';
+import LinearGradient from 'react-native-linear-gradient';
+
 import styles from './styles';
 
 class Speaker extends React.Component {
@@ -59,6 +61,28 @@ class Speaker extends React.Component {
           <Text style={styles.name}>{data.name}</Text>
           <Text style={styles.bio}>{data.bio}</Text>
           <Text>{data.url}</Text>
+          <View style={styles.removeContainer}>
+            <TouchableOpacity
+              style={styles.button}
+              title="Read More on Wikipedia"
+              onPress={() => Alert.alert('button pressed')}>
+              <LinearGradient
+                colors={['#7B7DD1', '#874AED']}
+                start={{x: 1, y: 0}}
+                end={{x: 0, y: 1}}
+                style={styles.gradient}>
+                <Text
+                  style={{
+                    fontSize: 20,
+                    color: 'white',
+                    paddingLeft: 20,
+                    paddingRight: 20,
+                  }}>
+                  Read More on Wikipedia
+                </Text>
+              </LinearGradient>
+            </TouchableOpacity>
+          </View>
         </View>
       </ScrollView>
     );
