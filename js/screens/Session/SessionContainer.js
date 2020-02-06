@@ -19,6 +19,9 @@ import styles from './styles';
 import {useQuery} from '@apollo/react-hooks';
 import LinearGradient from 'react-native-linear-gradient';
 import SpeakerContainer from '../Speaker/SpeakerContainer';
+import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
+import {faHeart} from '@fortawesome/free-solid-svg-icons';
+
 class SessionContainer extends React.Component {
   constructor(props) {
     super(props);
@@ -45,8 +48,20 @@ class SessionContainer extends React.Component {
 
     return (
       <ScrollView>
-        <View>
+        <View style={styles.containerLocation}>
           <Text style={styles.location}>{data?.location}</Text>
+          <TouchableOpacity
+            onPress={() => {
+              // if (faveIds.indexOf(item.id) == -1) {
+              //   setFaveIds([...faveIds, item.id]);
+              // }
+              // models.setFave([...faveIds, item.id]);
+              // setFaveIds([]);
+            }}>
+            <View style={styles.icon}>
+              <FontAwesomeIcon icon={faHeart} />
+            </View>
+          </TouchableOpacity>
         </View>
         <View>
           <Text style={styles.title}>{data?.title}</Text>

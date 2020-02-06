@@ -62,6 +62,15 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     margin: 30,
   },
+  containerLocation: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  icon: {
+    paddingRight: 30,
+    paddingTop: 30,
+  },
 });
 
 export default styles;
