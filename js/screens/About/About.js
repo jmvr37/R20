@@ -29,23 +29,25 @@ class About extends React.Component {
         <View style={styles.aboutImage}>
           <Image source={require('../../assets/images/r10_logo.png')} />
         </View>
+        <View style={styles.border}></View>
         <Text style={styles.text}>
           R10 is a conference that focuses on just about any topic related to
           dev
         </Text>
         <View>
           <View>
-            <Text style={styles.title}>Date Venue</Text>
+            <Text style={styles.title}>Date & Venue</Text>
           </View>
           <Text style={styles.text}>
             The R10 conference will take place on Tuesday, June 27, 2020 in
             Vancouver, BC.
           </Text>
+          <Text style={styles.title}>Code of Conduct</Text>
         </View>
 
         <View>
           {data.map(item => {
-            return <ConductItem item={item} />;
+            return <ConductItem style={styles.desc} item={item} />;
           })}
         </View>
       </ScrollView>

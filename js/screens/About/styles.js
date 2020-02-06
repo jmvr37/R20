@@ -2,10 +2,13 @@ import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
   aboutImage: {
-    paddingTop: '15%',
+    paddingTop: 10,
+    paddingBottom: 40,
     width: '100%',
+
     justifyContent: 'center',
-    alignItems: 'stretch',
+    alignItems: 'center',
+    display: 'flex',
   },
 
   aboutPage: {
@@ -17,18 +20,28 @@ const styles = StyleSheet.create({
   },
 
   text: {
-    fontSize: 25,
-    lineHeight: 25,
-    paddingBottom: 10,
+    fontSize: 20,
+    lineHeight: 30,
+    paddingBottom: 30,
     fontWeight: '400',
     color: 'black',
   },
   title: {
     fontSize: 25,
     fontWeight: 'bold',
-    padding: 15,
+    paddingLeft: 0,
     lineHeight: 25,
     maxHeight: 'auto',
+    paddingBottom: 30,
+    paddingTop: 10,
+  },
+  desc: {
+    fontSize: 20,
+  },
+  border: {
+    borderBottomWidth: 3,
+    borderBottomColor: '#ededed',
+    height: 30,
   },
 });
 
