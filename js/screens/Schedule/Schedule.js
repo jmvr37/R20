@@ -56,8 +56,11 @@ class Schedule extends React.Component {
         renderItem={({item, index, section}) => (
           <TouchableHighlight
             onPress={() => {
-              // console.log('item' + JSON.stringify(item));
-              this.props.navigation.push('Session', {item});
+              if (item.title == 'Lunch' || item.title == 'After Party') {
+                return;
+              } else {
+                this.props.navigation.push('Session', {item});
+              }
             }}>
             <View>
               <Text key={index} style={styles.title}>
