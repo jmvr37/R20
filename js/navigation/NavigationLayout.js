@@ -47,28 +47,20 @@ const FavesStack = createStackNavigator(
   {
     Faves: {
       screen: Faves,
-      navigationOptions: {
-        tabBarIcon: ({tintColor}) => (
-          <FontAwesomeIcon icon={faHeart} color={tintColor} size={30} />
-        ),
-      },
     },
   },
 
-  // {
-  //   defaultNavigationOptions: ({navigation}) => ({
-  //     ...NavigationHeader(navigation),
-  //   }),
-  // },
+  {
+    defaultNavigationOptions: ({navigation}) => ({
+      ...NavigationHeader(navigation),
+    }),
+  },
 );
 
 const MapsStack = createStackNavigator(
   {
     Maps: {
       screen: Maps,
-      tabBarIcon: ({tintColor}) => (
-        <FontAwesomeIcon icon={faMap} color={tintColor} size={30} />
-      ),
     },
   },
 
@@ -92,29 +84,29 @@ const TabNavigator = createBottomTabNavigator(
   },
 
   {
-    // defaultNavigationOptions: ({navigation}) => ({
-    //   tabBarIcon: ({tintColor}) => {
-    //     const {routeName} = navigation.state;
-    //     let FontAwesomeIcons = iconName;
-    //     // let iconName = icon;
-    //     if (routeName === 'Schedule') {
-    //       iconName = 'faCalendarAlt';
-    //     } else if (routeName === 'Map') {
-    //       iconName = 'faMap';
-    //     } else if (routeName === 'Faves') {
-    //       iconName = 'ios-heart';
-    //     } else if (routeName === 'About') {
-    //       iconName = 'ios-information-circle';
-    //     }
-    //     return <FontAwesomeIcons size={25} color={tintColor} />;
-    //   },
-    // }),
+    defaultNavigationOptions: ({navigation}) => ({
+      tabBarIcon: ({tintColor}) => {
+        const {routeName} = navigation.state;
+        // let FontAwesomeIcons = iconName;
+        let icon;
+        if (routeName === 'Schedule') {
+          icon = faCalendarAlt;
+        } else if (routeName === 'Maps') {
+          icon = faMap;
+        } else if (routeName === 'Faves') {
+          icon = faHeart;
+        } else if (routeName === 'About') {
+          icon = faExclamationCircle;
+        }
+        return <FontAwesomeIcon icon={icon} size={25} color={tintColor} />;
+      },
+    }),
 
     tabBarOptions: {
       activeTintColor: 'white',
       inactiveTintColor: '#999999',
       labelStyle: {
-        fontSize: 15,
+        fontSize: 12,
         margin: 10,
         // fontFamily: 'Montserrat',
       },
