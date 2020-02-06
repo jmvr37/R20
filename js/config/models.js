@@ -1,5 +1,5 @@
-import React from 'react';
-import AsyncStorage from '@react-native-community/async-storage';
+// import React from 'react';
+// import AsyncStorage from '@react-native-community/async-storage';
 
 // let favesIds = [1, 2, 3, 4, 5];
 
@@ -8,10 +8,10 @@ import AsyncStorage from '@react-native-community/async-storage';
 //   name: 'event',
 //   time: '10',
 // };
-// AsyncStorage.setItem('id',JSON.stringify(favesIds));
-// AsyncStorage.removeItem('id',JSON.stringify(favesIds));
+// AsyncStorage.setItem('id', JSON.stringify(favesIds));
+// AsyncStorage.removeItem('id', JSON.stringify(favesIds));
 
-// const saveData = async (obj) => {
+// const saveFaves = async obj => {
 //   try {
 //     await AsyncStorage.setItem('faveIds', JSON.stringify('faveIds'));
 //   } catch (e) {
@@ -33,7 +33,7 @@ import AsyncStorage from '@react-native-community/async-storage';
 // };
 
 // export default {
-//   saveData,
+//   saveFaves,
 //   removeData,
 // };
 

@@ -44,6 +44,8 @@ class SessionContainer extends React.Component {
   render() {
     const {navigation} = this.props;
     const data = navigation.state.params?.item;
+    // const {faveIds, setFaveIds} = useContext;
+
     console.log(this.props);
 
     return (
@@ -52,14 +54,14 @@ class SessionContainer extends React.Component {
           <Text style={styles.location}>{data?.location}</Text>
           <TouchableOpacity
             onPress={() => {
-              // if (faveIds.indexOf(item.id) == -1) {
-              //   setFaveIds([...faveIds, item.id]);
-              // }
-              // models.setFave([...faveIds, item.id]);
-              // setFaveIds([]);
+              if (faveIds.indexOf(data.id) == -1) {
+                setFaveIds([...faveIds, data.id]);
+              }
+              models.setFave([...faveIds, data.id]);
+              setFaveIds([]);
             }}>
             <View style={styles.icon}>
-              <FontAwesomeIcon icon={faHeart} />
+              <FontAwesomeIcon icon={faHeart} size={20} color={'red'} />
             </View>
           </TouchableOpacity>
         </View>

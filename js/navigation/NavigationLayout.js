@@ -112,6 +112,10 @@ const TabNavigator = createBottomTabNavigator(
       },
       style: {
         backgroundColor: 'black',
+        paddingTop: 8,
+      },
+      tabStyle: {
+        height: 60,
       },
     },
   },

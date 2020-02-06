@@ -43,11 +43,11 @@ class Schedule extends React.Component {
 
   render() {
     const {data} = this.props;
-    const {faveIds, setFaveIds} = this.context;
+    const {faveIds, setFaveIds} = useContext;
     const sessions = formatData(data);
     // const [faveIds, setFaveIds] = useContext(FavesContext);
-
-    console.log(data);
+    console.log(faveIds);
+    // console.log(data);
     // const IconComponent = Ionicons;
 
     return (
@@ -72,14 +72,14 @@ class Schedule extends React.Component {
                 </Text>
                 <TouchableOpacity
                   onPress={() => {
-                    // if (faveIds.indexOf(item.id) == -1) {
-                    //   setFaveIds([...faveIds, item.id]);
-                    // }
-                    // models.setFave([...faveIds, item.id]);
-                    // setFaveIds([]);
+                    if (faveIds.indexOf(item.id) == -1) {
+                      setFaveIds([...faveIds, item.id]);
+                    }
+                    models.setFave([...faveIds, item.id]);
+                    setFaveIds([]);
                   }}>
                   <View style={styles.icon}>
-                    <FontAwesomeIcon icon={faHeart} />
+                    <FontAwesomeIcon icon={faHeart} color={'red'} />
                   </View>
                 </TouchableOpacity>
               </View>

@@ -9,6 +9,7 @@ import {
   TouchableHighlight,
   TouchableOpacity,
   Button,
+  Linking,
 } from 'react-native';
 import propTypes from 'prop-types';
 import {withNavigation} from 'react-navigation';
@@ -60,12 +61,14 @@ class Speaker extends React.Component {
           />
           <Text style={styles.name}>{data.name}</Text>
           <Text style={styles.bio}>{data.bio}</Text>
-          <Text>{data.url}</Text>
+          {/* <Text>{data.url}</Text> */}
           <View style={styles.removeContainer}>
             <TouchableOpacity
               style={styles.button}
               title="Read More on Wikipedia"
-              onPress={() => Alert.alert('button pressed')}>
+              onPress={() => {
+                Linking.openURL(data.url);
+              }}>
               <LinearGradient
                 colors={['#7B7DD1', '#874AED']}
                 start={{x: 1, y: 0}}
