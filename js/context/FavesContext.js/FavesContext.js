@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 export const FavesContext = React.createContext();
-import AsyncStorage from '@react-native-community/async-storage';
+import {saveFaves, getFaves, removeFaves} from '../../config/models';
 
 class FavesProvider extends React.Component {
   constructor(props) {
@@ -9,11 +9,32 @@ class FavesProvider extends React.Component {
       faveIds: [],
     };
   }
+
+  async componentDidMount() {
+    let faveIds = await getFaves();
+    this.setState({faveIds});
+  }
+
+  addFaveSession = async sessionId => {
+    await addFave(sessionId);
+    let newFaves = await getFaves();
+    this.setState({faveIds: newFaves});
+  };
+
+  removeSession = async sessionId => {
+    await removeFave(sessionId);
+    let newFaves = await getFaves();
+    this.setState({faveIds: newFaves});
+  };
+
   render() {
-    const {faveIds} = this.faveIds;
-    console.log(faveIds);
     return (
-      <FavesContext.Provider value={{...this.state}}>
+      <FavesContext.Provider
+        value={{
+          addFaveSession: this.addFaveSession,
+          removeSession: this.removeFaveSession,
+          faveIds: this.state.faveIds,
+        }}>
         {this.props.children}
       </FavesContext.Provider>
     );

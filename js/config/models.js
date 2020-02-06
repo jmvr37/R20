@@ -1,52 +1,41 @@
-// import React from 'react';
-// import AsyncStorage from '@react-native-community/async-storage';
+import React from 'react';
+import AsyncStorage from '@react-native-community/async-storage';
 
-// let favesIds = [1, 2, 3, 4, 5];
-
-// let obj = {
-//   id: 1,
-//   name: 'event',
-//   time: '10',
-// };
-// AsyncStorage.setItem('id', JSON.stringify(favesIds));
-// AsyncStorage.removeItem('id', JSON.stringify(favesIds));
-
-// const saveFaves = async obj => {
-//   try {
-//     await AsyncStorage.setItem('faveIds', JSON.stringify('faveIds'));
-//   } catch (e) {
-//     throw e;
-//   }
-//   const result = await AsyncStorage.getItem('faveIds');
-
-//   console.log(JSON.parse(result).value);
-// };
-
-// const removeData = async () => {
-//   try {
-//     await AsyncStorage.removeItem('thisIsaKey,', JSON.stringify({value: 'hi'}));
-//     const remove = await AsyncStorage.removeItem('thisIsaKey');
-//   } catch (e) {
-//     throw e;
-//   }
-//   console.log(JSON.parse(remove).value);
-// };
-
-// export default {
-//   saveFaves,
-//   removeData,
-// };
-
-const setFave = async obj => {
+const saveFaves = async faveId => {
   try {
-    let IdArr = {};
-    IdArr.value = obj;
-    await AsyncStorage.setItem('AS_faveIds', JSON.stringify(IdArr));
+    let existingIds = JSON.parse(await asyncStorage.getItem('faveIds')) || [];
+    if (existingIds.indexOf(faveId) === -1) {
+      existingIds.push(faveId);
+    }
+    await AsyncStorage.setItem('faveIds', JSON.stringify('existingIds'));
   } catch (e) {
-    console.log(e);
+    throw e;
+  }
+};
+
+const getFaves = async () => {
+  try {
+    let faveIds = await asyncStorage.getItem('faveIds');
+    return JSON.parse(faveIds);
+  } catch (e) {
+    throw e;
+  }
+};
+
+const removeFaves = async faveId => {
+  try {
+    let existingIds = JSON.parse(await AsyncStorage.getItem('faveIds')) || [];
+    let newIds = existingIds.filter(id => {
+      id !== faveId;
+    });
+    await AsyncStorage.setItem('faveIds', JSON.stringify(newIds));
+  } catch (e) {
+    throw e;
   }
 };
 
 export default {
-  setFave,
+  saveFaves,
+  getFaves,
+  removeFaves,
 };

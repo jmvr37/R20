@@ -6,7 +6,6 @@ import Schedule from '../screens/Schedule';
 import Faves from '../screens/Faves';
 import Maps from '../screens/Maps';
 import {NavigationHeader} from './config';
-// import Ionicons from 'react-native-vector-icons/Ionicons';
 import Speaker from '../screens/Speaker';
 import Session from '../screens/Session';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
