@@ -47,20 +47,28 @@ const FavesStack = createStackNavigator(
   {
     Faves: {
       screen: Faves,
+      navigationOptions: {
+        tabBarIcon: ({tintColor}) => (
+          <FontAwesomeIcon icon={faHeart} color={tintColor} size={30} />
+        ),
+      },
     },
   },
 
-  {
-    defaultNavigationOptions: ({navigation}) => ({
-      ...NavigationHeader(navigation),
-    }),
-  },
+  // {
+  //   defaultNavigationOptions: ({navigation}) => ({
+  //     ...NavigationHeader(navigation),
+  //   }),
+  // },
 );
 
 const MapsStack = createStackNavigator(
   {
     Maps: {
       screen: Maps,
+      tabBarIcon: ({tintColor}) => (
+        <FontAwesomeIcon icon={faMap} color={tintColor} size={30} />
+      ),
     },
   },
 
@@ -87,8 +95,8 @@ const TabNavigator = createBottomTabNavigator(
     // defaultNavigationOptions: ({navigation}) => ({
     //   tabBarIcon: ({tintColor}) => {
     //     const {routeName} = navigation.state;
-    //     let FontAwesomeIcons = FontAwesomeIcon;
-    //     let iconName;
+    //     let FontAwesomeIcons = iconName;
+    //     // let iconName = icon;
     //     if (routeName === 'Schedule') {
     //       iconName = 'faCalendarAlt';
     //     } else if (routeName === 'Map') {
@@ -98,13 +106,7 @@ const TabNavigator = createBottomTabNavigator(
     //     } else if (routeName === 'About') {
     //       iconName = 'ios-information-circle';
     //     }
-    //     return (
-    //       <FontAwesomeIcons
-    //         iconName={faCalendarAlt}
-    //         size={25}
-    //         color={tintColor}
-    //       />
-    //     );
+    //     return <FontAwesomeIcons size={25} color={tintColor} />;
     //   },
     // }),
 
@@ -113,6 +115,7 @@ const TabNavigator = createBottomTabNavigator(
       inactiveTintColor: '#999999',
       labelStyle: {
         fontSize: 15,
+        margin: 10,
         // fontFamily: 'Montserrat',
       },
       style: {

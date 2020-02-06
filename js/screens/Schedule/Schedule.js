@@ -19,8 +19,8 @@ import {formatData} from './helpers';
 import styles from './styles';
 import Session from '../../screens/Session/';
 import {withNavigation} from 'react-navigation';
-// import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
-// import {faHeart} from '@fortawesome/free-solid-svg-icons';
+import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
+import {faHeart} from '@fortawesome/free-solid-svg-icons';
 // import {faHeart as emptyHeart} from '@fortawesome/free-regular-svg-icons';
 import {FavesContext} from '../../context/FavesContext.js';
 import {models} from '../../config/models';
@@ -79,7 +79,7 @@ class Schedule extends React.Component {
                     // setFaveIds([]);
                   }}>
                   <View style={styles.icon}>
-                    <Text>heart icon</Text>
+                    <FontAwesomeIcon icon={faHeart} />
                   </View>
                 </TouchableOpacity>
               </View>
@@ -93,8 +93,6 @@ class Schedule extends React.Component {
           return {
             title: title,
             data: data.map(x => x),
-            name: name,
-            image: image,
           };
         })}
         keyExtractor={(item, index) => item + index}
