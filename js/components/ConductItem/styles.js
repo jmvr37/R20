@@ -7,13 +7,14 @@ const styles = StyleSheet.create({
     paddingBottom: 20,
     lineHeight: 20,
     color: 'purple',
+    marginTop: 3,
   },
 
   description: {
-    fontSize: 15,
-    fontWeight: '300',
+    fontSize: 20,
+    fontWeight: '200',
     paddingBottom: 10,
-    lineHeight: 22,
+    lineHeight: 25,
     color: 'black',
   },
   buttonAnimation: {
