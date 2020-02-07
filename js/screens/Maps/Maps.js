@@ -25,6 +25,7 @@ class Maps extends React.Component {
         <Marker
           coordinate={marker.latlng}
           image={require('../../assets/images/map_pin.png')}
+          title="hi"
         />
       </MapView>
     );

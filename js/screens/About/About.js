@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import PropTypes from 'prop-types';
+import propTypes from 'prop-types';
 import {gql} from 'apollo-boost';
 import {useQuery} from '@apollo/react-hooks';
 import styles from './styles';
@@ -55,8 +55,8 @@ class About extends React.Component {
   }
 }
 
-About.PropTypes = {
-  data: PropTypes.array.isRequired,
+About.propTypes = {
+  data: propTypes.array.isRequired,
 };
 
 export default About;

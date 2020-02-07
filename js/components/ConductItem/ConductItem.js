@@ -20,16 +20,20 @@ class ConductItem extends Component {
     this.toggleItem = this.toggleItem.bind(this);
   }
 
-  toggleItem() {
+  toggleItem = () => {
+    LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
     this.setState({expanded: !this.state.expanded});
-  }
+  };
 
   render() {
     const {item} = this.props;
 
     return (
       <View>
-        <TouchableOpacity onPress={this.toggleItem}>
+        <TouchableOpacity
+          onPress={this.toggleItem}
+          style={styles.buttonAnimation}>
+          <Text style={styles.icon}>{this.state.expanded ? '-' : '+'}</Text>
           <Text style={styles.title}>{item.title}</Text>
         </TouchableOpacity>
         {this.state.expanded && (

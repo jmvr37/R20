@@ -16,6 +16,16 @@ const styles = StyleSheet.create({
     lineHeight: 22,
     color: 'black',
   },
+  buttonAnimation: {
+    display: 'flex',
+    flexDirection: 'row',
+  },
+  icon: {
+    color: 'purple',
+    fontSize: 18,
+    paddingRight: 10,
+    paddingBottom: 15,
+  },
 });
 
 export default styles;

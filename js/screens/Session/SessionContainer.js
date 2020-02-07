@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {
   Text,
   View,
@@ -16,7 +16,6 @@ import {Query} from 'apollo-boost';
 import Session from './Session';
 import PropTypes from 'prop-types';
 import styles from './styles';
-import {useQuery} from '@apollo/react-hooks';
 import LinearGradient from 'react-native-linear-gradient';
 import SpeakerContainer from '../Speaker/SpeakerContainer';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
@@ -44,26 +43,25 @@ class SessionContainer extends React.Component {
   render() {
     const {navigation} = this.props;
     const data = navigation.state.params?.item;
-    // const {faveIds, setFaveIds} = useContext;
+    // const {session, faveIds, addFaveSession, removeFaveSession} = useContext;
 
     console.log(this.props);
+
+    // let buttonTitle;
+
+    // if (faveIds.indexOf(data.id) === -1) {
+    //   buttonTitle = 'Add Fave';
+    // } else {
+    //   buttonTitle = 'Remove Fave';
+    // }
 
     return (
       <ScrollView>
         <View style={styles.containerLocation}>
           <Text style={styles.location}>{data?.location}</Text>
-          <TouchableOpacity
-            onPress={() => {
-              if (faveIds.indexOf(data.id) == -1) {
-                setFaveIds([...faveIds, data.id]);
-              }
-              models.setFave([...faveIds, data.id]);
-              setFaveIds([]);
-            }}>
-            <View style={styles.icon}>
-              <FontAwesomeIcon icon={faHeart} size={20} color={'red'} />
-            </View>
-          </TouchableOpacity>
+          <View style={styles.icon}>
+            <FontAwesomeIcon icon={faHeart} size={20} color={'red'} />
+          </View>
         </View>
         <View>
           <Text style={styles.title}>{data?.title}</Text>
@@ -101,8 +99,8 @@ class SessionContainer extends React.Component {
           <View style={styles.removeContainer}>
             <TouchableOpacity
               style={styles.button}
-              title="Remove from faves"
-              onPress={() => Alert.alert('button pressed')}>
+              title="Add faves"
+              onPress={() => alert('button pressed')}>
               <LinearGradient
                 colors={['#7B7DD1', '#874AED']}
                 start={{x: 1, y: 0}}
@@ -125,3 +123,27 @@ SessionContainer.propTypes = {
 };
 
 export default withNavigation(SessionContainer);
+
+// onPress={() => {
+//   if (faveIds.indexOf(session.id) == -1) {
+//     addFaveSession(session.id);
+//   } else {
+//     removeFaveSession(session.id);
+//   }
+// }}
+
+// code for the heart icon
+// {faveIds.indexOf(data?.id) !== -1 && (
+//   <FontAwesomeIcon icon={faHeart} size={20} color={'red'} />
+// )}
+
+// code for add to faves button
+// {
+//   {
+//     if (faveIds.indexOf(data?.id) === -1) {
+//       addFaveSession(data?.id);
+//     } else {
+//       removeFaveSession(data?.id);
+//     }
+//   }
+// }
