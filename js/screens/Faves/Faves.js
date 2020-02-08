@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import {
   SafeAreaView,
   StyleSheet,
@@ -12,31 +12,49 @@ import {
 } from 'react-native';
 import FavesContainer from './FavesContainer';
 import models from '../../config/models';
+import Schedule from '../Schedule/Schedule';
 
-class Faves extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      data: null,
-    };
-  }
-
-  componentDidMount() {
-    async () => {
-      await models.set('faveIds');
-      const response = await models.get('faveIds');
-      this.setState({data: response});
-    };
-  }
-
-  render() {
-    return (
+const Faves = ({data, faveIds, addFaveSession, removeFaveSession}) => {
+  return (
+    <ScrollView>
       <View>
-        <Text> faves are: {this.state.data}</Text>
+        <Schedule
+          addFaveSession={addFaveSession}
+          removeFaveSession={removeFaveSession}
+          faveIds={faveIds}
+          data={data}
+        />
       </View>
-    );
-    // return <FavesContainer />;
-  }
-}
+    </ScrollView>
+  );
+};
 
 export default Faves;
+
+// class Faves extends React.Component {
+//   constructor(props) {
+//     super(props);
+//     this.state = {
+//       data: null,
+//     };
+//   }
+
+//   componentDidMount() {
+//     async () => {
+//       await models.set('faveIds');
+//       const response = await models.get('faveIds');
+//       this.setState({data: response});
+//     };
+//   }
+
+//   render() {
+//     return (
+//       <View>
+//         <Text> faves are: {this.state.data}</Text>
+//       </View>
+//     );
+//     // return <FavesContainer />;
+//   }
+// }
+
+// export default Faves;

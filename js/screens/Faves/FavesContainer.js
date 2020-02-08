@@ -5,12 +5,53 @@ import {gql} from 'apollo-boost';
 import {ApolloProvider} from '@apollo/react-hooks';
 import {SafeAreaView, StyleSheet, ScrollView, View, Text} from 'react-native';
 import Faves from './Faves';
+import {FavesContext} from '../../context/FavesContext.js';
 
-class FavesContainer extends React.Component {
-  render() {
-    return <Faves />;
-    // return <Text> this text is inside the faves container </Text>;
+const ALL_SESSIONS_QUERY = gql`
+  {
+    allSessions {
+      id
+      description
+      location
+      startTime
+      title
+      speaker {
+        id
+        bio
+        image
+        name
+        url
+      }
+    }
   }
-}
+`;
+
+const FavesContainer = () => {
+  console.log('faves contaner');
+  return (
+    <FavesContext.Consumer>
+      {({faveIds, addFaveSession, removeFaveSession}) => {
+        return (
+          <Query query={ALL_SESSIONS_QUERY}>
+            {({loading, error, data}) => {
+              if (loading) return <Text>Loading...</Text>;
+              if (error) return <Text>Error :(</Text>;
+              return (
+                <Faves
+                  addFaveSession={addFaveSession}
+                  removeFaveSession={removeFaveSession}
+                  faveIds={faveIds}
+                  data={data.allSessions.filter(session =>
+                    faveIds.includes(session.id),
+                  )}
+                />
+              );
+            }}
+          </Query>
+        );
+      }}
+    </FavesContext.Consumer>
+  );
+};
 
 export default FavesContainer;

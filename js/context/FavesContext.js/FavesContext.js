@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
-export const FavesContext = React.createContext();
+// export const FavesContext = React.createContext();
 import {saveFaves, getFaves, removeFaves} from '../../config/models';
+
+const FavesContext = React.createContext();
 
 class FavesProvider extends React.Component {
   constructor(props) {
@@ -16,13 +18,13 @@ class FavesProvider extends React.Component {
   }
 
   addFaveSession = async sessionId => {
-    await addFave(sessionId);
+    await saveFaves(sessionId);
     let newFaves = await getFaves();
     this.setState({faveIds: newFaves});
   };
 
   removeSession = async sessionId => {
-    await removeFave(sessionId);
+    await removeFaves(sessionId);
     let newFaves = await getFaves();
     this.setState({faveIds: newFaves});
   };
@@ -41,3 +43,4 @@ class FavesProvider extends React.Component {
   }
 }
 export default FavesProvider;
+export {FavesContext};

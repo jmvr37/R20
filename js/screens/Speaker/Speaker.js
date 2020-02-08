@@ -34,9 +34,9 @@ class Speaker extends React.Component {
     const {data, navigation} = this.props;
     // const data = this.props.navigation.state.params?.item;
 
-    console.log(data);
-    console.log('navigation');
-    console.log(this.props);
+    console.log(navigation.url + 'speaker url');
+    // console.log('navigation');
+    // console.log(this.props);
 
     return (
       <ScrollView>
