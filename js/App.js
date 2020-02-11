@@ -1,18 +1,10 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow
- */
-
 import React, {component} from 'react';
 import {AboutContainer} from './screens/About';
 import {ApolloProvider} from '@apollo/react-hooks';
 import client from './config/api';
-import {ScheduleContainer} from './screens/Schedule/index';
 import RootStackNavigator from './navigation/RootStackNavigator';
 // // import {RootStackNavigator} from './navigation/RootStackNavigator';
+import {saveFaves, getFaves, removeFaves} from './config/models';
 
 import {
   SafeAreaView,
@@ -25,6 +17,8 @@ import {
   Image,
 } from 'react-native';
 
+let MyContext = React.createContext();
+
 import {
   Header,
   LearnMoreLinks,
@@ -34,13 +28,50 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 
 class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      faveIds: [],
+    };
+  }
+
+  // async componentDidMount() {
+  //   console.log('------->');
+  //   console.log(getFaves);
+  //   console.log('------->');
+
+  //   let faveIds = await getFaves();
+  //   this.setState({faveIds});
+  // }
+
+  // addFaveSession = async sessionId => {
+  //   await saveFaves(sessionId);
+  //   let newFaves = await getFaves();
+  //   this.setState({faveIds: newFaves});
+  // };
+
+  // removeFaveSession = async sessionId => {
+  //   await removeFaves(sessionId);
+  //   let newFaves = await getFaves();
+  //   this.setState({faveIds: newFaves});
+  // };
+
   render() {
     return (
       <ApolloProvider client={client}>
-        <RootStackNavigator />
+        <MyContext.Provider
+          value={{
+            // addFaveSession: this.addFaveSession,
+            // removeSession: this.removeFaveSession,
+            // faveIds: this.state.faveIds,
+            banana: 'bar',
+          }}>
+          <RootStackNavigator />
+        </MyContext.Provider>
       </ApolloProvider>
     );
   }
 }
 
 export default App;
+export {MyContext};

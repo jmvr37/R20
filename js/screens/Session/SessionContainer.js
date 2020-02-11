@@ -20,6 +20,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import SpeakerContainer from '../Speaker/SpeakerContainer';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {faHeart} from '@fortawesome/free-solid-svg-icons';
+import {MyContext} from '../../App.js';
 
 class SessionContainer extends React.Component {
   constructor(props) {
@@ -41,79 +42,82 @@ class SessionContainer extends React.Component {
   };
 
   render() {
-    const {navigation} = this.props;
-    const data = navigation.state.params?.item;
     // const {session, faveIds, addFaveSession, removeFaveSession} = useContext;
 
     console.log(this.props);
 
-    // let buttonTitle;
-
-    // if (faveIds.indexOf(data.id) === -1) {
-    //   buttonTitle = 'Add Fave';
-    // } else {
-    //   buttonTitle = 'Remove Fave';
-    // }
-
     return (
-      <ScrollView>
-        <View style={styles.containerLocation}>
-          <Text style={styles.location}>{data?.location}</Text>
-          <View style={styles.icon}>
-            <FontAwesomeIcon icon={faHeart} size={20} color={'red'} />
-          </View>
-        </View>
-        <View>
-          <Text style={styles.title}>{data?.title}</Text>
-        </View>
-        <View>
-          <Text style={styles.hour}>{this.GroupHour(data?.startTime)}</Text>
-        </View>
-        <View>
-          <Text style={styles.description}>{data?.description}</Text>
-        </View>
-        <View style={{marginTop: 22}}>
-          <View>
-            <Text style={{fontSize: 23, color: 'grey', paddingLeft: 15}}>
-              Presented by:
-            </Text>
-          </View>
-          <TouchableHighlight
-            onPress={() => {
-              navigation.push('Speaker', {speakerData: data.speaker});
-            }}>
-            <View style={styles.speakerInfo}>
-              <Image
-                source={{uri: data.speaker.image}}
-                style={{
-                  width: 70,
-                  height: 70,
-                  borderRadius: 400 / 2,
-                  paddingLeft: 20,
-                }}
-              />
-              <Text style={styles.speakerName}>{data.speaker.name}</Text>
-            </View>
-          </TouchableHighlight>
-          <View style={styles.border}></View>
-          <View style={styles.removeContainer}>
-            <TouchableOpacity
-              style={styles.button}
-              title="Add faves"
-              onPress={() => alert('button pressed')}>
-              <LinearGradient
-                colors={['#7B7DD1', '#874AED']}
-                start={{x: 1, y: 0}}
-                end={{x: 0, y: 1}}
-                style={styles.gradient}>
-                <Text style={{fontSize: 25, color: 'white'}}>
-                  Remove from Faves
+      <MyContext.Consumer>
+        {(faveIds, addFaveSession, removeFaveSession, session) => {
+          const {navigation} = this.props;
+          const data = navigation.state.params?.item;
+
+          return (
+            <ScrollView>
+              <View style={styles.containerLocation}>
+                <Text style={styles.location}>{data?.location}</Text>
+                <View style={styles.icon}>
+                  <FontAwesomeIcon icon={faHeart} size={20} color={'red'} />
+                </View>
+              </View>
+              <View>
+                <Text style={styles.title}>{data?.title}</Text>
+              </View>
+              <View>
+                <Text style={styles.hour}>
+                  {this.GroupHour(data?.startTime)}
                 </Text>
-              </LinearGradient>
-            </TouchableOpacity>
-          </View>
-        </View>
-      </ScrollView>
+              </View>
+              <View>
+                <Text style={styles.description}>{data?.description}</Text>
+              </View>
+              <View style={{marginTop: 22}}>
+                <View>
+                  <Text style={{fontSize: 23, color: 'grey', paddingLeft: 15}}>
+                    Presented by:
+                  </Text>
+                </View>
+                <TouchableHighlight
+                  onPress={() => {
+                    navigation.push('Speaker', {speakerData: data.speaker});
+                  }}>
+                  <View style={styles.speakerInfo}>
+                    <Image
+                      source={{uri: data.speaker.image}}
+                      style={{
+                        width: 70,
+                        height: 70,
+                        borderRadius: 400 / 2,
+                        paddingLeft: 20,
+                      }}
+                    />
+                    <Text style={styles.speakerName}>{data.speaker.name}</Text>
+                  </View>
+                </TouchableHighlight>
+                <View style={styles.border}></View>
+                <View style={styles.removeContainer}>
+                  <TouchableOpacity
+                    style={styles.button}
+                    title="Add faves"
+                    onPress={() => {
+                      Alert.alert('button pressed');
+                    }}>
+                    <LinearGradient
+                      colors={['#7B7DD1', '#874AED']}
+                      start={{x: 1, y: 0}}
+                      end={{x: 0, y: 1}}
+                      style={styles.gradient}>
+                      <Text style={{fontSize: 25, color: 'white'}}>
+                        Remove from Faves
+                      </Text>
+                    </LinearGradient>
+                  </TouchableOpacity>
+                </View>
+              </View>
+            </ScrollView>
+          );
+        }}
+      </MyContext.Consumer>
     );
   }
 }
@@ -147,3 +151,13 @@ export default withNavigation(SessionContainer);
 //     }
 //   }
 // }
+
+// onPress={() => alert('button pressed')}>
+
+// let buttonTitle;
+
+//           if (faveIds.indexOf(data.id) === -1) {
+//             buttonTitle = 'Add Fave';
+//           } else {
+//             buttonTitle = 'Remove Fave';
+//           }

@@ -23,7 +23,7 @@ class FavesProvider extends React.Component {
     this.setState({faveIds: newFaves});
   };
 
-  removeSession = async sessionId => {
+  removeFaveSession = async sessionId => {
     await removeFaves(sessionId);
     let newFaves = await getFaves();
     this.setState({faveIds: newFaves});

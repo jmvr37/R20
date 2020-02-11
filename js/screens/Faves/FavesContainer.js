@@ -5,8 +5,8 @@ import {gql} from 'apollo-boost';
 import {ApolloProvider} from '@apollo/react-hooks';
 import {SafeAreaView, StyleSheet, ScrollView, View, Text} from 'react-native';
 import Faves from './Faves';
-import {FavesContext} from '../../context/FavesContext.js';
-
+import MyContext from '../../App.js';
+import Schedule from '../Schedule/Schedule';
 const ALL_SESSIONS_QUERY = gql`
   {
     allSessions {
@@ -29,7 +29,7 @@ const ALL_SESSIONS_QUERY = gql`
 const FavesContainer = () => {
   console.log('faves contaner');
   return (
-    <FavesContext.Consumer>
+    <MyContext.Consumer>
       {({faveIds, addFaveSession, removeFaveSession}) => {
         return (
           <Query query={ALL_SESSIONS_QUERY}>
@@ -37,7 +37,7 @@ const FavesContainer = () => {
               if (loading) return <Text>Loading...</Text>;
               if (error) return <Text>Error :(</Text>;
               return (
-                <Faves
+                <Schedule
                   addFaveSession={addFaveSession}
                   removeFaveSession={removeFaveSession}
                   faveIds={faveIds}
@@ -50,7 +50,7 @@ const FavesContainer = () => {
           </Query>
         );
       }}
-    </FavesContext.Consumer>
+    </MyContext.Consumer>
   );
 };
 

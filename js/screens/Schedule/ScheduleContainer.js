@@ -32,7 +32,6 @@ const ScheduleContainer = () => {
 
   return (
     <ScrollView>
-      {/* <SessionList data={data.allSessions} /> */}
       <Schedule data={data.allSessions} />
     </ScrollView>
   );
