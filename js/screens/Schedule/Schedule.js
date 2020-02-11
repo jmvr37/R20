@@ -15,15 +15,16 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import ScheduleContainer from './ScheduleContainer';
-import {formatData} from './helpers';
+import {formatData} from '../../components/SessionList/helpers';
 import styles from './styles';
 import Session from '../../screens/Session/';
 import {withNavigation} from 'react-navigation';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {faHeart} from '@fortawesome/free-solid-svg-icons';
 // import {faHeart as emptyHeart} from '@fortawesome/free-regular-svg-icons';
-import {FavesContext} from '../../context/FavesContext.js';
+// import {FavesContext} from '../../context/FavesContext.js';
 import {models} from '../../config/models';
+import {MyContext} from '../../App.js';
 
 class Schedule extends React.Component {
   constructor(props) {
@@ -43,60 +44,71 @@ class Schedule extends React.Component {
 
   render() {
     const {data} = this.props;
-    const {faveIds, setFaveIds} = useContext;
     const sessions = formatData(data);
-    // const [faveIds, setFaveIds] = useContext(FavesContext);
-    console.log(faveIds);
     // console.log(data);
     // const IconComponent = Ionicons;
 
     return (
-      <SectionList
-        ItemSeparatorComponent={this.separator}
-        renderItem={({item, index, section}) => (
-          <TouchableHighlight
-            onPress={() => {
-              if (item.title == 'Lunch' || item.title == 'After Party') {
-                return;
-              } else {
-                this.props.navigation.push('Session', {item});
-              }
-            }}>
-            <View>
-              <Text key={index} style={styles.title}>
-                {item.title}
-              </Text>
-              <View style={styles.locationContainer}>
-                <Text key={index} style={styles.location}>
-                  {item.location}
-                </Text>
-                <TouchableOpacity
+      <MyContext.Consumer>
+        {({faveIds, addFaveSession, removeFaveSession, session, data}) => {
+          console.log('------->');
+          console.log(faveIds);
+          // console.log(p);
+          // let {faveIds, addFaveSession, removeFaveSession} = p;
+          return (
+            <SectionList
+              ItemSeparatorComponent={this.separator}
+              renderItem={({item, index, section}) => (
+                <TouchableHighlight
                   onPress={() => {
-                    if (faveIds.indexOf(item.id) == -1) {
-                      setFaveIds([...faveIds, item.id]);
+                    if (item.title == 'Lunch' || item.title == 'After Party') {
+                      return;
+                    } else {
+                      this.props.navigation.push('Session', {item});
                     }
-                    models.setFave([...faveIds, item.id]);
-                    setFaveIds([]);
                   }}>
-                  <View style={styles.icon}>
-                    <FontAwesomeIcon icon={faHeart} color={'red'} />
+                  <View>
+                    <Text key={index} style={styles.title}>
+                      {item.title}
+                    </Text>
+                    <View style={styles.locationContainer}>
+                      <Text key={index} style={styles.location}>
+                        {item.location}
+                      </Text>
+                      <TouchableOpacity
+                        onPress={() => {
+                          {
+                            faveIds.indexOf(data?.id) !== -1 && (
+                              <FontAwesomeIcon
+                                icon={faHeart}
+                                size={20}
+                                color={'white'}
+                              />
+                            );
+                          }
+                        }}>
+                        <View style={styles.icon}>
+                          <FontAwesomeIcon icon={faHeart} color={'red'} />
+                        </View>
+                      </TouchableOpacity>
+                    </View>
                   </View>
-                </TouchableOpacity>
-              </View>
-            </View>
-          </TouchableHighlight>
-        )}
-        renderSectionHeader={({section: {title}}) => (
-          <Text style={styles.groupsHour}>{this.GroupHour(title)}</Text>
-        )}
-        sections={sessions.map(({title, data, name, image}) => {
-          return {
-            title: title,
-            data: data.map(x => x),
-          };
-        })}
-        keyExtractor={(item, index) => item + index}
-      />
+                </TouchableHighlight>
+              )}
+              renderSectionHeader={({section: {title}}) => (
+                <Text style={styles.groupsHour}>{this.GroupHour(title)}</Text>
+              )}
+              sections={sessions.map(({title, data, name, image}) => {
+                return {
+                  title: title,
+                  data: data.map(x => x),
+                };
+              })}
+              keyExtractor={(item, index) => item + index}
+            />
+          );
+        }}
+      </MyContext.Consumer>
     );
   }
 }
