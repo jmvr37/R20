@@ -43,18 +43,30 @@ class Schedule extends React.Component {
   };
 
   render() {
-    const {data} = this.props;
-    const sessions = formatData(data);
     // console.log(data);
     // const IconComponent = Ionicons;
 
     return (
       <MyContext.Consumer>
-        {({faveIds, addFaveSession, removeFaveSession, session, data}) => {
+        {({faveIds, addFaveSession, removeFaveSession, session}) => {
           console.log('------->');
           console.log(faveIds);
           // console.log(p);
-          // let {faveIds, addFaveSession, removeFaveSession} = p;
+          const {data} = this.props;
+          const sessions = formatData(data);
+
+          let heartIcon;
+
+          if (faveIds.indexOf(sessions.id) === -1) {
+            heartIcon = (
+              <FontAwesomeIcon icon={faHeart} size={20} color={'white'} />
+            );
+          } else {
+            heartIcon = (
+              <FontAwesomeIcon icon={faHeart} size={20} color={'red'} />
+            );
+          }
+
           return (
             <SectionList
               ItemSeparatorComponent={this.separator}
@@ -75,7 +87,9 @@ class Schedule extends React.Component {
                       <Text key={index} style={styles.location}>
                         {item.location}
                       </Text>
-                      <TouchableOpacity
+                      <Text style={styles.icon}>{heartIcon}</Text>
+
+                      {/* <TouchableOpacity
                         onPress={() => {
                           {
                             faveIds.indexOf(data?.id) !== -1 && (
@@ -90,7 +104,7 @@ class Schedule extends React.Component {
                         <View style={styles.icon}>
                           <FontAwesomeIcon icon={faHeart} color={'red'} />
                         </View>
-                      </TouchableOpacity>
+                      </TouchableOpacity> */}
                     </View>
                   </View>
                 </TouchableHighlight>

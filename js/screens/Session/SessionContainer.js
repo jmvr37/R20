@@ -78,8 +78,8 @@ class SessionContainer extends React.Component {
               <View style={styles.containerLocation}>
                 <Text style={styles.location}>{data?.location}</Text>
                 <Text style={styles.icon}>{heartIcon}</Text>
-                {/* <FontAwesomeIcon icon={faHeart} size={20} color={'red'} /> */}
               </View>
+
               <View>
                 <Text style={styles.title}>{data?.title}</Text>
               </View>

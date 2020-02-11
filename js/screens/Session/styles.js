@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
   },
   icon: {
     paddingRight: 30,
-    paddingTop: 30,
+    marginTop: 30,
   },
 });
 
