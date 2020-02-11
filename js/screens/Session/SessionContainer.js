@@ -53,6 +53,19 @@ class SessionContainer extends React.Component {
           const data = navigation.state.params?.item;
           //console.log('------>');
           //console.log(faveIds);
+
+          let heartIcon;
+
+          if (faveIds.indexOf(data.id) === -1) {
+            heartIcon = (
+              <FontAwesomeIcon icon={faHeart} size={20} color={'white'} />
+            );
+          } else {
+            heartIcon = (
+              <FontAwesomeIcon icon={faHeart} size={20} color={'red'} />
+            );
+          }
+
           let buttonTitle;
 
           if (faveIds.indexOf(data.id) === -1) {
@@ -64,9 +77,8 @@ class SessionContainer extends React.Component {
             <ScrollView>
               <View style={styles.containerLocation}>
                 <Text style={styles.location}>{data?.location}</Text>
-                <View style={styles.icon}>
-                  <FontAwesomeIcon icon={faHeart} size={20} color={'red'} />
-                </View>
+                <Text style={styles.icon}>{heartIcon}</Text>
+                {/* <FontAwesomeIcon icon={faHeart} size={20} color={'red'} /> */}
               </View>
               <View>
                 <Text style={styles.title}>{data?.title}</Text>
