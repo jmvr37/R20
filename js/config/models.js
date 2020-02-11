@@ -36,7 +36,7 @@ const removeFaves = async faveId => {
   try {
     let existingIds = JSON.parse(await AsyncStorage.getItem('faveIds')) || [];
     let newIds = existingIds.filter(id => {
-      id !== faveId;
+      return id !== faveId;
     });
     await AsyncStorage.setItem('faveIds', JSON.stringify(newIds));
   } catch (e) {
