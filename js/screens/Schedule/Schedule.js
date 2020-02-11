@@ -50,8 +50,9 @@ class Schedule extends React.Component {
 
     return (
       <MyContext.Consumer>
-        {(faveIds, addFaveSession, removeFaveSession, session, data) => {
-          console.log('my context stuff is');
+        {({faveIds, addFaveSession, removeFaveSession, session, data}) => {
+          console.log('------->');
+          console.log(faveIds);
           // console.log(p);
           // let {faveIds, addFaveSession, removeFaveSession} = p;
           return (
@@ -76,10 +77,14 @@ class Schedule extends React.Component {
                       </Text>
                       <TouchableOpacity
                         onPress={() => {
-                          if (faveIds.indexOf(session.id) == -1) {
-                            addFaveSession(session.id);
-                          } else {
-                            removeFaveSession(session.id);
+                          {
+                            faveIds.indexOf(data?.id) !== -1 && (
+                              <FontAwesomeIcon
+                                icon={faHeart}
+                                size={20}
+                                color={'white'}
+                              />
+                            );
                           }
                         }}>
                         <View style={styles.icon}>

@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-// export const FavesContext = React.createContext();
 import {saveFaves, getFaves, removeFaves} from '../../config/models';
 
 const FavesContext = React.createContext();
@@ -34,7 +33,7 @@ class FavesProvider extends React.Component {
       <FavesContext.Provider
         value={{
           addFaveSession: this.addFaveSession,
-          removeSession: this.removeFaveSession,
+          removeFaveSession: this.removeFaveSession,
           faveIds: this.state.faveIds,
         }}>
         {this.props.children}

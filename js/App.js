@@ -35,36 +35,35 @@ class App extends React.Component {
     };
   }
 
-  // async componentDidMount() {
-  //   console.log('------->');
-  //   console.log(getFaves);
-  //   console.log('------->');
+  async componentDidMount() {
+    console.log('------->');
+    console.log(getFaves);
+    console.log('------->');
 
-  //   let faveIds = await getFaves();
-  //   this.setState({faveIds});
-  // }
+    let faveIds = await getFaves();
+    this.setState({faveIds});
+  }
 
-  // addFaveSession = async sessionId => {
-  //   await saveFaves(sessionId);
-  //   let newFaves = await getFaves();
-  //   this.setState({faveIds: newFaves});
-  // };
+  addFaveSession = async sessionId => {
+    await saveFaves(sessionId);
+    let newFaves = await getFaves();
+    this.setState({faveIds: newFaves});
+  };
 
-  // removeFaveSession = async sessionId => {
-  //   await removeFaves(sessionId);
-  //   let newFaves = await getFaves();
-  //   this.setState({faveIds: newFaves});
-  // };
+  removeFaveSession = async sessionId => {
+    await removeFaves(sessionId);
+    let newFaves = await getFaves();
+    this.setState({faveIds: newFaves});
+  };
 
   render() {
     return (
       <ApolloProvider client={client}>
         <MyContext.Provider
           value={{
-            // addFaveSession: this.addFaveSession,
-            // removeSession: this.removeFaveSession,
-            // faveIds: this.state.faveIds,
-            banana: 'bar',
+            addFaveSession: this.addFaveSession,
+            removeFaveSession: this.removeFaveSession,
+            faveIds: this.state.faveIds,
           }}>
           <RootStackNavigator />
         </MyContext.Provider>

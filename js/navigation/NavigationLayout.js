@@ -74,6 +74,21 @@ const MapsStack = createStackNavigator(
 // export default createBottomTabNavigator(AboutStack);
 // export createbottomnavition
 
+// const DrawerNav = createDrawerNavigator({
+//   About: {
+//     screen: About,
+//   },
+//   Schedule: {
+//     screen: Schedule,
+//   },
+//   Maps: {
+//     screen: Maps,
+//   },
+//   Faves: {
+//     screen: Faves,
+//   },
+// });
+
 const TabNavigator = createBottomTabNavigator(
   {
     Schedule: ScheduleStack,
@@ -120,4 +135,10 @@ const TabNavigator = createBottomTabNavigator(
   },
 );
 
+// const AppNavigation = Platform.select({
+//   ios: () => createAppContainer(BottomNav),
+//   android: () => createAppContainer(DrawerNav),
+// })();
+
 export default TabNavigator;
+// export default DrawerNav;

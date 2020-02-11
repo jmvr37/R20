@@ -48,10 +48,18 @@ class SessionContainer extends React.Component {
 
     return (
       <MyContext.Consumer>
-        {(faveIds, addFaveSession, removeFaveSession, session) => {
+        {({faveIds, addFaveSession, removeFaveSession, session}) => {
           const {navigation} = this.props;
           const data = navigation.state.params?.item;
+          //console.log('------>');
+          //console.log(faveIds);
+          let buttonTitle;
 
+          if (faveIds.indexOf(data.id) === -1) {
+            buttonTitle = 'Add Fave';
+          } else {
+            buttonTitle = 'Remove Fave';
+          }
           return (
             <ScrollView>
               <View style={styles.containerLocation}>
@@ -100,7 +108,12 @@ class SessionContainer extends React.Component {
                     style={styles.button}
                     title="Add faves"
                     onPress={() => {
-                      Alert.alert('button pressed');
+                      console.log(faveIds);
+                      if (faveIds.indexOf(data?.id) == -1) {
+                        addFaveSession(data?.id);
+                      } else {
+                        removeFaveSession(data?.id);
+                      }
                     }}>
                     <LinearGradient
                       colors={['#7B7DD1', '#874AED']}
@@ -108,7 +121,7 @@ class SessionContainer extends React.Component {
                       end={{x: 0, y: 1}}
                       style={styles.gradient}>
                       <Text style={{fontSize: 25, color: 'white'}}>
-                        Remove from Faves
+                        {buttonTitle}
                       </Text>
                     </LinearGradient>
                   </TouchableOpacity>
@@ -127,14 +140,6 @@ SessionContainer.propTypes = {
 };
 
 export default withNavigation(SessionContainer);
-
-// onPress={() => {
-//   if (faveIds.indexOf(session.id) == -1) {
-//     addFaveSession(session.id);
-//   } else {
-//     removeFaveSession(session.id);
-//   }
-// }}
 
 // code for the heart icon
 // {faveIds.indexOf(data?.id) !== -1 && (

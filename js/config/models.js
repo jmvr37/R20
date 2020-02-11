@@ -7,7 +7,7 @@ const saveFaves = async faveId => {
     if (existingIds.indexOf(faveId) === -1) {
       existingIds.push(faveId);
     }
-    await AsyncStorage.setItem('faveIds', JSON.stringify('existingIds'));
+    await AsyncStorage.setItem('faveIds', JSON.stringify(existingIds));
   } catch (e) {
     console.error('SAVE BLEW UP');
 
