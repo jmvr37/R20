@@ -11,7 +11,6 @@ const Session = () => {
     return (
       <View>
         <SessionContainer />
-        <Text>helloooo</Text>
       </View>
     );
   }

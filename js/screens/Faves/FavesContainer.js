@@ -30,6 +30,7 @@ const FavesContainer = () => {
   console.log('faves contaner');
   return (
     <MyContext.Consumer>
+      {/* <Text>hi</Text> */}
       {({faveIds, addFaveSession, removeFaveSession}) => {
         return (
           <Query query={ALL_SESSIONS_QUERY}>

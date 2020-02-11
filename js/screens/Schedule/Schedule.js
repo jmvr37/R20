@@ -87,7 +87,15 @@ class Schedule extends React.Component {
                       <Text key={index} style={styles.location}>
                         {item.location}
                       </Text>
-                      <Text style={styles.icon}>{heartIcon}</Text>
+                      <Text style={styles.icon}>
+                        {faveIds.indexOf(item.id) !== -1 && (
+                          <FontAwesomeIcon
+                            icon={faHeart}
+                            size={20}
+                            color={'red'}
+                          />
+                        )}
+                      </Text>
 
                       {/* <TouchableOpacity
                         onPress={() => {
