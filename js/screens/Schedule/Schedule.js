@@ -55,18 +55,6 @@ class Schedule extends React.Component {
           const {data} = this.props;
           const sessions = formatData(data);
 
-          let heartIcon;
-
-          if (faveIds.indexOf(sessions.id) === -1) {
-            heartIcon = (
-              <FontAwesomeIcon icon={faHeart} size={20} color={'white'} />
-            );
-          } else {
-            heartIcon = (
-              <FontAwesomeIcon icon={faHeart} size={20} color={'red'} />
-            );
-          }
-
           return (
             <SectionList
               ItemSeparatorComponent={this.separator}

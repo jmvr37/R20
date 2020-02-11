@@ -26,7 +26,8 @@ const All_SESSIONS = gql`
 `;
 
 const ScheduleContainer = () => {
-  const {loading, error, data} = useQuery(All_SESSIONS);
+  const {loading, error, data} = useQuery(All_SESSIONS); //
+
   if (loading) return <Text>Loading...</Text>;
   if (error) return <Text>Error!</Text>;
 
