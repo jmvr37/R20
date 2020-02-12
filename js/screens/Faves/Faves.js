@@ -18,12 +18,12 @@ const Faves = ({data, faveIds, addFaveSession, removeFaveSession}) => {
   return (
     <ScrollView>
       <View>
-        {/* <Faves
-          addFaveSession={addFaveSession}
-          removeFaveSession={removeFaveSession}
-          faveIds={faveIds}
-          data={data}
-        /> */}
+        <Schedule
+        // addFaveSession={addFaveSession}
+        // removeFaveSession={removeFaveSession}
+        // faveIds={faveIds}
+        // data={data}
+        />
       </View>
     </ScrollView>
   );

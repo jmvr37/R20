@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import {saveFaves, getFaves, removeFaves} from '../../config/models';
 
-const FavesContext = React.createContext();
+const MyContext = React.createContext();
 
-class FavesProvider extends React.Component {
+class MyContextProvider extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -30,16 +30,16 @@ class FavesProvider extends React.Component {
 
   render() {
     return (
-      <FavesContext.Provider
+      <MyContext.Provider
         value={{
           addFaveSession: this.addFaveSession,
           removeFaveSession: this.removeFaveSession,
           faveIds: this.state.faveIds,
         }}>
         {this.props.children}
-      </FavesContext.Provider>
+      </MyContext.Provider>
     );
   }
 }
-export default FavesProvider;
-export {FavesContext};
+export default MyContextProvider;
+export {MyContext};

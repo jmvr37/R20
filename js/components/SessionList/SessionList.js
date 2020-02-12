@@ -22,7 +22,7 @@ import {withNavigation} from 'react-navigation';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {faHeart} from '@fortawesome/free-solid-svg-icons';
 // import {faHeart as emptyHeart} from '@fortawesome/free-regular-svg-icons';
-import {FavesContext} from '../../context/FavesContext/index.js';
+// import {FavesContext} from '../../context/FavesContext/index.js';
 import {models} from '../../config/models';
 
 GroupHour = hour => {
@@ -85,20 +85,3 @@ SessionList.propTypes = {
 };
 
 export default withNavigation(SessionList);
-
-// {
-//     if (faveIds.indexOf(item.id) == -1) {
-//       setFaveIds([...faveIds, item.id]);
-//     }
-//     models.setFave([...faveIds, item.id]);
-//     setFaveIds([]);
-//   }
-
-// render() {
-//     const {data} = this.props;
-//     // const {faveIds, setFaveIds} = useContext;
-//     const sessions = formatData(data);
-//     // const [faveIds, setFaveIds] = useContext(FavesContext);
-//     // console.log(faveIds);
-//     // console.log(data);
-//     // const IconComponent = Ionicons;

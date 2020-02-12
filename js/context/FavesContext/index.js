@@ -1,4 +1,4 @@
-import {FavesContext} from './FavesContext';
-import FavesProvider from './FavesContext';
-export {FavesContext};
-export default FavesProvider;
+import {MyContext} from './FavesContext';
+import MyContextProvider from './FavesContext';
+export {MyContext};
+export default MyContextProvider;

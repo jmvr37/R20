@@ -20,8 +20,7 @@ const saveFaves = async faveId => {
 const getFaves = async () => {
   try {
     let faveIds = await AsyncStorage.getItem('faveIds');
-    // console.log('fave Ids are ');
-    // console.log(JSON.parse(faveIds));
+
     if (faveIds) return JSON.parse(faveIds);
     return [];
   } catch (e) {

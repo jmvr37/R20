@@ -11,16 +11,12 @@ import {
   Button,
 } from 'react-native';
 import {withNavigation} from 'react-navigation';
-import {gql} from 'apollo-boost';
-import {Query} from 'apollo-boost';
-import Session from './Session';
 import PropTypes from 'prop-types';
 import styles from './styles';
 import LinearGradient from 'react-native-linear-gradient';
-import SpeakerContainer from '../Speaker/SpeakerContainer';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {faHeart} from '@fortawesome/free-solid-svg-icons';
-import {MyContext} from '../../App.js';
+import {MyContext} from '../../context/FavesContext';
 
 class SessionContainer extends React.Component {
   constructor(props) {
@@ -42,8 +38,6 @@ class SessionContainer extends React.Component {
   };
 
   render() {
-    // const {session, faveIds, addFaveSession, removeFaveSession} = useContext;
-
     console.log(this.props);
 
     return (
@@ -51,8 +45,6 @@ class SessionContainer extends React.Component {
         {({faveIds, addFaveSession, removeFaveSession, session}) => {
           const {navigation} = this.props;
           const data = navigation.state.params?.item;
-          //console.log('------>');
-          //console.log(faveIds);
 
           let heartIcon;
 
@@ -152,29 +144,3 @@ SessionContainer.propTypes = {
 };
 
 export default withNavigation(SessionContainer);
-
-// code for the heart icon
-// {faveIds.indexOf(data?.id) !== -1 && (
-//   <FontAwesomeIcon icon={faHeart} size={20} color={'red'} />
-// )}
-
-// code for add to faves button
-// {
-//   {
-//     if (faveIds.indexOf(data?.id) === -1) {
-//       addFaveSession(data?.id);
-//     } else {
-//       removeFaveSession(data?.id);
-//     }
-//   }
-// }
-
-// onPress={() => alert('button pressed')}>
-
-// let buttonTitle;
-
-//           if (faveIds.indexOf(data.id) === -1) {
-//             buttonTitle = 'Add Fave';
-//           } else {
-//             buttonTitle = 'Remove Fave';
-//           }

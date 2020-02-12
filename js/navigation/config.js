@@ -22,7 +22,5 @@ export const NavigationHeader = navigation => ({
     backgroundColor: 'transparent',
   },
   headerTintColor: '#fff',
-  headerTitleStyle: {
-    // fontFamily: 'Montserrat',
-  },
+  headerTitleStyle: {},
 });

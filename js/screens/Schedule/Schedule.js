@@ -21,10 +21,8 @@ import Session from '../../screens/Session/';
 import {withNavigation} from 'react-navigation';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {faHeart} from '@fortawesome/free-solid-svg-icons';
-// import {faHeart as emptyHeart} from '@fortawesome/free-regular-svg-icons';
-// import {FavesContext} from '../../context/FavesContext.js';
-import {models} from '../../config/models';
-import {MyContext} from '../../App.js';
+
+import {MyContext} from '../../context/FavesContext';
 
 class Schedule extends React.Component {
   constructor(props) {
@@ -43,9 +41,6 @@ class Schedule extends React.Component {
   };
 
   render() {
-    // console.log(data);
-    // const IconComponent = Ionicons;
-
     return (
       <MyContext.Consumer>
         {({faveIds, addFaveSession, removeFaveSession, session}) => {

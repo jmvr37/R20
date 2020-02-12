@@ -4,8 +4,8 @@ import {ApolloProvider} from '@apollo/react-hooks';
 import client from './config/api';
 import RootStackNavigator from './navigation/RootStackNavigator';
 // // import {RootStackNavigator} from './navigation/RootStackNavigator';
-import {saveFaves, getFaves, removeFaves} from './config/models';
-
+import model from './config/models';
+import MyContextProvider from './context/FavesContext';
 import {
   SafeAreaView,
   StyleSheet,
@@ -17,8 +17,6 @@ import {
   Image,
 } from 'react-native';
 
-let MyContext = React.createContext();
-
 import {
   Header,
   LearnMoreLinks,
@@ -28,49 +26,15 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      faveIds: [],
-    };
-  }
-
-  async componentDidMount() {
-    console.log('------->');
-    console.log(getFaves);
-    console.log('------->');
-
-    let faveIds = await getFaves();
-    this.setState({faveIds});
-  }
-
-  addFaveSession = async sessionId => {
-    await saveFaves(sessionId);
-    let newFaves = await getFaves();
-    this.setState({faveIds: newFaves});
-  };
-
-  removeFaveSession = async sessionId => {
-    await removeFaves(sessionId);
-    let newFaves = await getFaves();
-    this.setState({faveIds: newFaves});
-  };
-
   render() {
     return (
       <ApolloProvider client={client}>
-        <MyContext.Provider
-          value={{
-            addFaveSession: this.addFaveSession,
-            removeFaveSession: this.removeFaveSession,
-            faveIds: this.state.faveIds,
-          }}>
+        <MyContextProvider>
           <RootStackNavigator />
-        </MyContext.Provider>
+        </MyContextProvider>
       </ApolloProvider>
     );
   }
 }
 
 export default App;
-export {MyContext};
