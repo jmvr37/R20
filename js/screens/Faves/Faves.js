@@ -19,10 +19,10 @@ const Faves = ({data, faveIds, addFaveSession, removeFaveSession}) => {
     <ScrollView>
       <View>
         <Schedule
-        // addFaveSession={addFaveSession}
-        // removeFaveSession={removeFaveSession}
-        // faveIds={faveIds}
-        // data={data}
+          addFaveSession={addFaveSession}
+          removeFaveSession={removeFaveSession}
+          faveIds={faveIds}
+          data={data}
         />
       </View>
     </ScrollView>

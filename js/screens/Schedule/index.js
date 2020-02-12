@@ -1,4 +1,11 @@
 import Schedule from './Schedule';
-export {Schedule};
 import ScheduleContainer from './ScheduleContainer';
-export default ScheduleContainer;
+//
+export {Schedule};
+export {ScheduleContainer};
+
+//
+// export default {
+//     Schedule: Schedule,
+//     ScheduleContainer: ScheduleContainer
+// }

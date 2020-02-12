@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, useContext} from 'react';
 import {useQuery} from '@apollo/react-hooks';
 import {Query} from '@apollo/react-hooks';
 import {gql} from 'apollo-boost';
@@ -6,11 +6,11 @@ import {gql} from 'apollo-boost';
 import {SafeAreaView, StyleSheet, ScrollView, View, Text} from 'react-native';
 import Faves from './Faves';
 import {MyContext} from '../../context/FavesContext';
-import Schedule from '../Schedule';
+import {Schedule} from '../Schedule';
 import {Maps} from '../Maps';
 import models from '../../config/models';
 
-const ALL_SESSIONS_QUERY = gql`
+const ALL_SESSIONS = gql`
   {
     allSessions {
       id
@@ -30,27 +30,20 @@ const ALL_SESSIONS_QUERY = gql`
 `;
 
 const FavesContainer = () => {
+  const {loading, error, data} = useQuery(ALL_SESSIONS);
+  const {faveIds, addFaveSession, removeFaveSession} = useContext(MyContext);
+  if (loading) return <Text>Loading...</Text>;
+  if (error) return <Text>Error :(</Text>;
+
+  console.log('-------->');
+  console.log(faveIds);
   return (
-    <MyContext.Consumer>
-      {({faveIds, addFaveSession, removeFaveSession}) => {
-        <Query query={ALL_SESSIONS_QUERY}>
-          {({loading, error, data}) => {
-            if (loading) return <Text>Loading...</Text>;
-            if (error) return <Text>Error :(</Text>;
-            return (
-              <Schedule
-                addFaveSession={addFaveSession}
-                removeFaveSession={removeFaveSession}
-                faveIds={faveIds}
-                data={data.allSessions.filter(session =>
-                  faveIds.includes(session.id),
-                )}
-              />
-            );
-          }}
-        </Query>;
-      }}
-    </MyContext.Consumer>
+    <Schedule
+      addFaveSession={addFaveSession}
+      removeFaveSession={removeFaveSession}
+      faveIds={faveIds}
+      data={data.allSessions.filter(session => faveIds.includes(session.id))}
+    />
   );
 };
 
@@ -83,3 +76,26 @@ export default FavesContainer;
 //     </MyContext.Consumer>
 //   );
 // };
+
+{
+  /* <MyContext.Consumer>
+  {({faveIds, addFaveSession, removeFaveSession}) => {
+    <Query query={ALL_SESSIONS_QUERY}>
+      {({loading, error, data}) => {
+        if (loading) return <Text>Loading...</Text>;
+        if (error) return <Text>Error :(</Text>;
+        return (
+          <Schedule
+            addFaveSession={addFaveSession}
+            removeFaveSession={removeFaveSession}
+            faveIds={faveIds}
+            data={data.allSessions.filter(session =>
+              faveIds.includes(session.id),
+            )}
+          />
+        );
+      }}
+    </Query>;
+  }}
+</MyContext.Consumer>; */
+}

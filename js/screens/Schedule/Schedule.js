@@ -14,7 +14,6 @@ import {
   TouchableHighlight,
   TouchableOpacity,
 } from 'react-native';
-import ScheduleContainer from './ScheduleContainer';
 import {formatData} from '../../components/SessionList/helpers';
 import styles from './styles';
 import Session from '../../screens/Session/';
@@ -44,10 +43,11 @@ class Schedule extends React.Component {
     return (
       <MyContext.Consumer>
         {({faveIds, addFaveSession, removeFaveSession, session}) => {
-          console.log('------->');
-          console.log(faveIds);
+          // console.log('------->');
+          // console.log(faveIds);
           // console.log(p);
           const {data} = this.props;
+          console.log('data', data);
           const sessions = formatData(data);
 
           return (

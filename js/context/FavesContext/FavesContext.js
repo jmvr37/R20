@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {saveFaves, getFaves, removeFaves} from '../../config/models';
 
-const MyContext = React.createContext();
+export const MyContext = React.createContext();
 
 class MyContextProvider extends React.Component {
   constructor(props) {
@@ -42,4 +42,3 @@ class MyContextProvider extends React.Component {
   }
 }
 export default MyContextProvider;
-export {MyContext};

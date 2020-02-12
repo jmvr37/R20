@@ -1,3 +1,4 @@
+import {createDrawerNavigator} from 'react-navigation-drawer';
 import React from 'react';
 import {createStackNavigator} from 'react-navigation-stack';
 import {createBottomTabNavigator, BottomTabBar} from 'react-navigation-tabs';
@@ -5,7 +6,7 @@ import About from '../screens/About';
 import Schedule from '../screens/Schedule';
 import Faves from '../screens/Faves';
 import Maps from '../screens/Maps';
-import {NavigationHeader} from './config';
+import {sharedNavigationOptions} from './config';
 import Speaker from '../screens/Speaker';
 import Session from '../screens/Session';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
@@ -24,7 +25,7 @@ const AboutStack = createStackNavigator(
   },
   {
     defaultNavigationOptions: ({navigation}) => ({
-      ...NavigationHeader(navigation),
+      ...sharedNavigationOptions(navigation),
     }),
   },
 );
@@ -37,7 +38,7 @@ const ScheduleStack = createStackNavigator(
 
   {
     defaultNavigationOptions: ({navigation}) => ({
-      ...NavigationHeader(navigation),
+      ...sharedNavigationOptions(navigation),
     }),
   },
 );
@@ -51,7 +52,7 @@ const FavesStack = createStackNavigator(
 
   {
     defaultNavigationOptions: ({navigation}) => ({
-      ...NavigationHeader(navigation),
+      ...sharedNavigationOptions(navigation),
     }),
   },
 );
@@ -65,31 +66,12 @@ const MapsStack = createStackNavigator(
 
   {
     defaultNavigationOptions: ({navigation}) => ({
-      ...NavigationHeader(navigation),
+      ...sharedNavigationOptions(navigation),
     }),
   },
 );
 
-// Dedicated stacks for Schedule and Faves will go here too!
-// export default createBottomTabNavigator(AboutStack);
-// export createbottomnavition
-
-// const DrawerNav = createDrawerNavigator({
-//   About: {
-//     screen: About,
-//   },
-//   Schedule: {
-//     screen: Schedule,
-//   },
-//   Maps: {
-//     screen: Maps,
-//   },
-//   Faves: {
-//     screen: Faves,
-//   },
-// });
-
-const TabNavigator = createBottomTabNavigator(
+export default createDrawerNavigator(
   {
     Schedule: ScheduleStack,
     Maps: MapsStack,
@@ -99,7 +81,7 @@ const TabNavigator = createBottomTabNavigator(
 
   {
     defaultNavigationOptions: ({navigation}) => ({
-      tabBarIcon: ({tintColor}) => {
+      drawerIcon: ({focused, horizontal, tintColor}) => {
         const {routeName} = navigation.state;
         // let FontAwesomeIcons = iconName;
         let icon;
@@ -116,22 +98,17 @@ const TabNavigator = createBottomTabNavigator(
       },
     }),
 
-    tabBarOptions: {
-      activeTintColor: 'white',
-      inactiveTintColor: '#999999',
+    contentOptions: {
+      activeTintColor: style.purple.color,
+      inactiveTintColor: style.mediumGrey.color,
       labelStyle: {
-        fontSize: 12,
-        margin: 10,
-        // fontFamily: 'Montserrat',
-      },
-      style: {
-        backgroundColor: 'black',
-        paddingTop: 8,
-      },
-      tabStyle: {
-        height: 60,
+        fontSize: 21,
+        fontFamily: style.mainFontRegular.fontFamily,
+        fontWeight: '600',
       },
     },
+
+    initialRouteName: 'Schedule',
   },
 );
 
@@ -140,5 +117,5 @@ const TabNavigator = createBottomTabNavigator(
 //   android: () => createAppContainer(DrawerNav),
 // })();
 
-export default TabNavigator;
+// export default TabNavigator;
 // export default DrawerNav;
