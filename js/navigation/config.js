@@ -2,7 +2,8 @@ import React from 'react';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {Header} from 'react-navigation-stack';
 import LinearGradient from 'react-native-linear-gradient';
-import {StyleSheet, View, TouchableOpacity, Platform} from 'react-native';
+import {StyleSheet, View, TouchableOpacity, Platform, Text} from 'react-native';
+
 import {
   faArrowLeft,
   faCalendarAlt,
@@ -25,6 +26,7 @@ const Menu = ({navigation}) => {
     <TouchableOpacity
       style={{paddingLeft: 20}}
       onPress={() => navigation.openDrawer()}>
+      <Text>Menu</Text>
       {/* <FontAwesomeIcon name={faHeart} size={30} color={'white'} /> */}
     </TouchableOpacity>
   );
